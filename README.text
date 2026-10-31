@@ -1,0 +1,29 @@
+PORTAIL COMMUNAUTAIRE DE KOFFI-AGROKRO
+======================================
+
+CONTENU
+- index.html : site public (page d'accueil et rubriques)
+- styles.css : mise en page responsive
+- script.js : affichage et recherche des hommages
+- admin.html : formulaire local d'ajout/suppression des personnes disparues
+- admin.js : fonctionnement de l'espace d'administration
+
+OUVRIR LE SITE
+1. Décompressez le fichier ZIP.
+2. Ouvrez index.html dans un navigateur (Chrome, Firefox, Edge).
+3. Pour ajouter des fiches commémoratives, ouvrez admin.html.
+
+IMPORTANT - VERSION DE DÉMONSTRATION
+Cette version fonctionne sans serveur. Les fiches ajoutées dans admin.html sont stockées dans le localStorage du navigateur utilisé. Elles ne sont donc pas automatiquement visibles sur les appareils des autres visiteurs. Il n'y a pas encore de connexion administrateur sécurisée ni de base de données en ligne.
+
+AVANT LA MISE EN LIGNE
+- Faire valider les textes, noms des autorités et représentants par la communauté.
+- Remplacer les textes provisoires par les informations officielles.
+- Ajouter les vrais noms des quartiers/secteurs et leurs photos.
+- Ajouter les coordonnées officielles du comité du site.
+- Obtenir l'accord des familles avant de publier les photos et informations des personnes décédées.
+- Choisir un nom de domaine et un hébergement.
+- Mettre en place une base de données, un espace administrateur sécurisé et des sauvegardes.
+
+PERSONNALISATION
+Les images de couverture sont chargées depuis Unsplash et nécessitent une connexion Internet. Remplacez-les par des photos autorisées de Koffi-Agrokro pour un rendu authentique.

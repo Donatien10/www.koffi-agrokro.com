@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suggestions publiées | Koffi-Agrokro</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="./index.html">KOFFI-AGROKRO</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+  <nav id="mainNav">
+   <a href="#accueil">Accueil</a>
+    <a href="#village">Le village</a>
+    <a href="#atouts">Nos atouts</a>
+    <a href="#quartiers">Quartiers</a>
+    <a href="#autorites">Autorités</a>
+    <a href="#memorial">Mémoire</a>
+    <a href="#contact">Contact</a>
+    <a href="#suggestion">Suggestion</a>
+  </nav>
+</header>
+
+<main class="section">
+  <div class="section-heading">
+    <span class="eyebrow">La parole aux habitants</span>
+    <h1>Suggestions et commentaires</h1>
+  </div>
+  <p>Consultez les messages validés et participez aux échanges autour de la vie du village.</p>
+
+  <div id="publishedSuggestions" class="cards" aria-live="polite">
+    <p>Chargement des suggestions...</p>
+  </div>
+
+  <a class="button button-dark" href="./index.html#suggestions">Envoyer une suggestion</a>
+  <a class="button" href="./index.html">Retour à l'accueil</a>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="currentYear"></span> Koffi-Agrokro</p>
+  <a href="./admin.html">Administration</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./script.js"></script>
+</body>
+</html>
