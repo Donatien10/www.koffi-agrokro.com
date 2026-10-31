@@ -1,89 +1,82 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administration | Koffi-Agrokro</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./admin-style.css">
 </head>
-<body class="admin-body">
+<body>
 
-<main class="admin-wrap">
+  <div class="admin-container">
 
-  <div class="admin-top">
-    <div>
-      <span class="section-kicker">ESPACE DE GESTION</span>
-      <h1>Administration du site</h1>
-      <p>Gestion des fiches commémoratives de Koffi-Agrokro.</p>
-    </div>
-    <a href="./index.html" class="button button-gold">← Retour au site</a>
+    <!-- En-tête -->
+    <header class="admin-header">
+      <div>
+        <span class="espace-gestion">ESPACE DE GESTION</span>
+        <h1>Administration du site</h1>
+        <p>Gestion des fiches commémoratives de Koffi-Agrokro.</p>
+      </div>
+      <a href="./index.html" class="btn-retour">&larr; Retour au site</a>
+    </header>
+
+    <!-- Carte principale : Formulaire d'ajout -->
+    <main class="admin-card">
+      <h2>Ajouter une personne disparue</h2>
+
+      <div class="alert-box">
+        Veuillez vérifier les informations et obtenir l'accord de la famille avant de publier une photo ou un hommage.
+      </div>
+
+      <form id="form-commemoratif">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom et prénoms</label>
+            <input type="text" id="nom" placeholder="Ex. Koffi Yao" required>
+          </div>
+          <div class="form-group">
+            <label for="quartier">Quartier</label>
+            <select id="quartier" required>
+              <option value="">Choisir le quartier</option>
+              <option value="quartier-1">Quartier 1</option>
+              <option value="quartier-2">Quartier 2</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date-naissance">Date de naissance</label>
+            <input type="date" id="date-naissance">
+          </div>
+          <div class="form-group">
+            <label for="date-deces">Date de décès</label>
+            <input type="date" id="date-deces">
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="chemin-photo">Chemin de la photo</label>
+          <input type="text" id="chemin-photo" placeholder="images/koffi-yao.jpg">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="message">Message d'hommage</label>
+          <textarea id="message" rows="4" placeholder="Écrire quelques mots en mémoire de cette personne..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enregistrer la fiche</button>
+      </form>
+    </main>
+
+    <!-- Carte secondaire : Liste des fiches -->
+    <section class="admin-card">
+      <h2>Personnes enregistrées</h2>
+      <p class="section-subtitle">Les fiches ci-dessous sont celles enregistrées dans ce navigateur.</p>
+      <p class="empty-text">Aucune fiche enregistrée pour le moment.</p>
+    </section>
+
   </div>
 
-  <section class="admin-panel">
-    <h2>Ajouter une personne disparue</h2>
-
-    <div class="notice">
-      Veuillez vérifier les informations et obtenir l'accord de la famille
-      avant de publier une photo ou un hommage.
-    </div>
-
-    <form id="personForm" class="admin-form">
-
-      <label>
-        Nom et prénoms
-        <input type="text" name="name" required placeholder="Ex. Koffi Yao">
-      </label>
-
-      <label>
-        Quartier
-        <select name="quartier" required>
-          <option value="">Choisir le quartier</option>
-          <option value="Quartier 1">Quartier 1</option>
-          <option value="Quartier 2">Quartier 2</option>
-          
-        </select>
-      </label>
-
-      <label>
-        Date de naissance
-        <input type="date" name="birth" required>
-      </label>
-
-      <label>
-        Date de décès
-        <input type="date" name="death" required>
-      </label>
-
-      <label class="wide">
-        Chemin de la photo
-        <input type="text" name="photo" placeholder="images/koffi-yao.jpg">
-      </label>
-
-      <label class="wide">
-        Message d'hommage
-        <textarea name="note" placeholder="Écrire quelques mots en mémoire de cette personne..."></textarea>
-      </label>
-
-      <button type="submit" class="button button-gold wide">
-        Enregistrer la fiche
-      </button>
-
-    </form>
-  </section>
-
-  <section class="admin-panel">
-    <h2>Personnes enregistrées</h2>
-    <p class="admin-help">
-      Les fiches ci-dessous sont celles enregistrées dans ce navigateur.
-    </p>
-    <div id="adminList" class="admin-list">
-      <p class="admin-help">Chargement des fiches...</p>
-    </div>
-  </section>
-
-</main>
-
-<script src="./admin.js"></script>
 </body>
 </html>

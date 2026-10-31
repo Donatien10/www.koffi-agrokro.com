@@ -4,19 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="Bienvenue à Koffi-Agrokro : découvrez notre village, son histoire, ses quartiers et ses habitants.">
+
   <title>Koffi-Agrokro | Notre village</title>
+
   <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header class="site-header">
+
   <a href="#accueil" class="brand">
     <span class="brand-mark">KA</span>
-    <span><strong>KOFFI-AGROKRO</strong><small>Notre village, notre fierté</small></span>
+    <span>
+      <strong>KOFFI-AGROKRO</strong>
+      <small>Notre village, notre fierté</small>
+    </span>
   </a>
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+  >
+    ☰
+  </button>
 
   <nav id="mainNav">
     <a href="#accueil">Accueil</a>
@@ -28,138 +45,605 @@
     <a href="#contact">Contact</a>
     <a href="#suggestion">Suggestion</a>
   </nav>
+
 </header>
 
+
 <main>
-  <section class="hero" id="accueil">
-    <div class="hero-content">
-      <span class="eyebrow">BIENVENUE CHEZ NOUS</span>
-      <h1>Koffi-Agrokro,<br><em>terre d'histoire</em><br>et de fraternité.</h1>
-      <p>Un village, une histoire, des valeurs et une communauté unie autour de son patrimoine.</p>
-      <div class="hero-actions">
-        <a href="#village" class="button button-gold">Découvrir le village</a>
-        <a href="#memorial" class="button button-light">Mémoire des disparus</a>
-      </div>
-    </div>
-    <span class="hero-note">KOFFI-AGROKRO • NOTRE IDENTITÉ</span>
-  </section>
 
-  <section class="section" id="village">
-    <div class="welcome-grid">
-      <div class="welcome-art">
-        <div class="art-label">KOFFI-AGROKRO<br><span>UN PATRIMOINE À PRÉSERVER</span></div>
+<!-- ================= ACCUEIL ================= -->
+
+<section class="hero" id="accueil">
+
+  <div class="hero-content">
+
+    <span class="eyebrow">BIENVENUE CHEZ NOUS</span>
+
+    <h1>
+      Koffi-Agrokro,<br>
+      <em>terre d'histoire</em><br>
+      et de fraternité.
+    </h1>
+
+    <p>
+      Un village, une histoire, des valeurs et une communauté
+      unie autour de son patrimoine.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#village" class="button button-gold">
+        Découvrir le village
+      </a>
+
+      <a href="#memorial" class="button button-light">
+        Mémoire des disparus
+      </a>
+    </div>
+
+  </div>
+
+  <span class="hero-note">
+    KOFFI-AGROKRO • NOTRE IDENTITÉ
+  </span>
+
+</section>
+
+
+<!-- ================= PRESENTATION DU VILLAGE ================= -->
+
+<section class="section" id="village">
+
+  <div class="welcome-grid">
+
+    <div class="welcome-art">
+
+      <div class="art-label">
+        KOFFI-AGROKRO<br>
+        <span>UN PATRIMOINE À PRÉSERVER</span>
       </div>
-      <div class="welcome-copy">
-        <span class="section-kicker">À PROPOS DE NOUS</span>
-        <h3>Un village riche de son histoire et de ses traditions</h3>
-        <p>Koffi-Agrokro est un village dont l'identité repose sur son histoire, ses traditions, ses familles et la solidarité entre ses habitants.</p>
-        <p>Ce site a pour objectif de faire connaître notre village, de valoriser ses richesses et de préserver la mémoire de celles et ceux qui ont marqué son histoire.</p>
-        <div class="fact-row">
-          <div><strong>1</strong><span>Communauté</span></div>
-          <div><strong>Unis</strong><span>Nos valeurs</span></div>
-          <div><strong>Héritage</strong><span>Notre histoire</span></div>
+
+    </div>
+
+    <div class="welcome-copy">
+
+      <span class="section-kicker">À PROPOS DE NOUS</span>
+
+      <h3>
+        Un village riche de son histoire et de ses traditions
+      </h3>
+
+      <p>
+        Koffi-Agrokro est un village dont l'identité repose sur
+        son histoire, ses traditions, ses familles et la solidarité
+        entre ses habitants.
+      </p>
+
+      <p>
+        Ce site a pour objectif de faire connaître notre village,
+        de valoriser ses richesses et de préserver la mémoire
+        de celles et ceux qui ont marqué son histoire.
+      </p>
+
+      <div class="fact-row">
+
+        <div>
+          <strong>1</strong>
+          <span>Communauté</span>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="dark-band">
+        <div>
+          <strong>Unis</strong>
+          <span>Nos valeurs</span>
+        </div>
+
+        <div>
+          <strong>Héritage</strong>
+          <span>Notre histoire</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DEVISE ================= -->
+
+<section class="dark-band">
+
+  <div>
+
+    <span class="section-kicker light-kicker">
+      NOTRE DEVISE
+    </span>
+
+    <h2>
+      Ensemble, préservons<br>
+      <em>notre héritage.</em>
+    </h2>
+
+  </div>
+
+  <p>
+    La mémoire de notre village se construit avec les témoignages,
+    les actions et l'engagement de chaque génération.
+  </p>
+
+</section>
+
+
+<!-- ================= NOS ATOUTS ================= -->
+
+<section class="section section-soft" id="atouts">
+
+  <div class="section-heading">
+
+    <span class="section-kicker">NOS RICHESSES</span>
+
+    <h2>Les atouts du village</h2>
+
+    <p>
+      Les éléments qui participent à l'identité et au développement
+      de Koffi-Agrokro.
+    </p>
+
+  </div>
+
+  <div class="cards-grid">
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./images-des 4 points fort du village/quelle_est_l_importance_de_l_environnement_208_1200.jpg"
+          alt="Environnement"
+        >
+      </span>
+
+      <h3>Environnement</h3>
+
+      <p>
+        Notre cadre de vie, nos terres et notre environnement naturel.
+      </p>
+
+    </article>
+
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./images-des 4 points fort du village/images solidarité.jfif"
+          alt="Solidarité"
+        >
+      </span>
+
+      <h3>Solidarité</h3>
+
+      <p>
+        L'entraide et les liens entre les familles et les habitants.
+      </p>
+
+    </article>
+
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./images-des 4 points fort du village/image traduiction.jfif"
+          alt="Traditions"
+        >
+      </span>
+
+      <h3>Traditions</h3>
+
+      <p>
+        Nos coutumes, notre culture et les valeurs transmises.
+      </p>
+
+    </article>
+
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./images-des 4 points fort du village/DkqXWsr8dvwzZQaUy1-ydr_pdPg7AU3ATLetHUNDrSPKeOyPLeaF0VZcj3GGgXu97zToTgZEWWBI-z93fhUKw6zXZFhmLrumJ4GzpgueuHVxMWi_8OalsSHj6G4bNTASfO_toPvOSxvvFx1BhcMysnUgX6D.jfif"
+          alt="Développement"
+        >
+      </span>
+
+      <h3>Développement</h3>
+
+      <p>
+        Les initiatives et les projets pour l'avenir du village.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= QUARTIERS ================= -->
+
+<section class="section" id="quartiers">
+
+  <div class="section-heading">
+
+    <span class="section-kicker">NOTRE ORGANISATION</span>
+
+    <h2>Les quartiers du village</h2>
+
+    <p>
+      Retrouvez ici les différents quartiers de Koffi-Agrokro.
+    </p>
+
+  </div>
+
+  <div class="cards-grid">
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./les quartier du village/0611117789547-web-tete.jpg"
+          alt="Quartier 1"
+        >
+      </span>
+
+      <h3>Quartier 1</h3>
+
+      <p>
+        Présentation et informations à compléter.
+      </p>
+
+    </article>
+
+
+    <article class="info-card">
+
+      <span class="card-icon">
+        <img
+          src="./les quartier du village/BGS2D3MJI4YVUM65PBINSFQZBI.jpg"
+          alt="Quartier 2"
+        >
+      </span>
+
+      <h3>Quartier 2</h3>
+
+      <p>
+        Présentation et informations à compléter.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= AUTORITES ================= -->
+
+<section class="section section-soft" id="autorites">
+
+  <div class="section-heading">
+
+    <span class="section-kicker">GOUVERNANCE LOCALE</span>
+
+    <h2>Les autorités du village</h2>
+
+    <p>
+      Les représentants et responsables qui contribuent
+      à la vie communautaire.
+    </p>
+
+  </div>
+
+  <div class="leaders-grid">
+
+    <article class="leader-card">
+
+      <div class="portrait-placeholder">
+        <img
+          src="./Les autorités du village/67c6cdfc123db_galerie_54968.jpg"
+          alt="Président du village"
+        >
+      </div>
+
+      <div class="leader-info">
+
+        <span class="role">PRÉSIDENT DU VILLAGE</span>
+
+        <h3>Nom à compléter</h3>
+
+        <p>
+          Présentation du président et de ses responsabilités.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="leader-card">
+
+      <div class="portrait-placeholder">
+        <img
+          src="./Les autorités du village/Les-chefs-de-quartier.jpg"
+          alt="Chef de quartier"
+        >
+      </div>
+
+      <div class="leader-info">
+
+        <span class="role">CHEF DE QUARTIER</span>
+
+        <h3>Nom à compléter</h3>
+
+        <p>
+          Présentation des responsables des quartiers.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <article class="leader-card">
+
+      <div class="portrait-placeholder">
+        <img
+          src="./Les autorités du village/representatnt.jpg"
+          alt="Représentants"
+        >
+      </div>
+
+      <div class="leader-info">
+
+        <span class="role">REPRÉSENTANTS</span>
+
+        <h3>À compléter</h3>
+
+        <p>
+          Présentation des représentants de la communauté.
+        </p>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MEMOIRE ================= -->
+
+<section class="section memorial-section" id="memorial">
+
+  <div class="section-heading">
+
+    <span class="section-kicker">DEVOIR DE MÉMOIRE</span>
+
+    <h2>À la mémoire de nos disparus</h2>
+
+    <p>
+      Nous rendons hommage aux personnes qui ont marqué
+      l'histoire de Koffi-Agrokro.
+    </p>
+
+  </div>
+
+  <div class="memorial-tools">
+
+    <input
+      id="memorialSearch"
+      type="search"
+      placeholder="Rechercher par nom ou quartier..."
+      aria-label="Rechercher une personne"
+    >
+
+    <span id="memorialCount">0 hommage</span>
+
+  </div>
+
+  <div class="memorial-grid" id="memorialGrid">
+
+    <div class="empty-state">
+      Les hommages validés apparaîtront ici.
+    </div>
+
+  </div>
+
+  <p class="privacy-note">
+    Les informations et photographies sont publiées dans le respect
+    des familles et après validation des informations communiquées.
+  </p>
+
+</section>
+
+
+<!-- ================= SUGGESTIONS ET DISCUSSIONS ================= -->
+
+<section class="section section-soft" id="suggestion">
+
+  <div class="section-heading">
+
+    <span class="section-kicker">PARTICIPATION CITOYENNE</span>
+
+    <h2>Suggestions et discussions</h2>
+
+    <p>
+      Chaque habitant peut proposer ses idées, partager ses préoccupations
+      et participer au développement de Koffi-Agrokro.
+    </p>
+
+  </div>
+
+
+  <div class="suggestion-layout">
+
+    <!-- FORMULAIRE POUR PUBLIER UNE SUGGESTION -->
+
+    <div class="suggestion-panel">
+
+      <h3>Proposer une suggestion</h3>
+
+      <p>
+        Partagez vos idées et vos propositions avec toute la communauté.
+      </p>
+
+      <form id="suggestionForm">
+
+        <label for="suggestionNom">
+          Votre nom ou pseudonyme
+        </label>
+
+        <input
+          type="text"
+          id="suggestionNom"
+          maxlength="60"
+          placeholder="Exemple : Un habitant du village"
+          required
+        >
+
+        <label for="suggestionContenu">
+          Votre suggestion
+        </label>
+
+        <textarea
+          id="suggestionContenu"
+          maxlength="2000"
+          placeholder="Écrivez votre idée ou proposition..."
+          required
+        ></textarea>
+
+        <button type="submit" id="suggestionButton">
+          Publier ma suggestion
+        </button>
+
+        <p id="suggestionMessage" aria-live="polite"></p>
+
+      </form>
+
+    </div>
+
+
+    <!-- PUBLICATIONS DES HABITANTS -->
+
+    <div class="suggestion-public">
+
+      <div class="suggestion-list-heading">
+
+        <div>
+
+          <h3>Les suggestions des habitants</h3>
+
+          <p>
+            Consultez les propositions et participez aux discussions.
+          </p>
+
+        </div>
+
+        <button type="button" id="refreshSuggestions">
+          Actualiser
+        </button>
+
+      </div>
+
+      <div id="suggestionList" aria-live="polite">
+        Chargement des suggestions...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section" id="contact">
+
+  <div class="contact-inner">
+
     <div>
-      <span class="section-kicker light-kicker">NOTRE DEVISE</span>
-      <h2>Ensemble, préservons<br><em>notre héritage.</em></h2>
-    </div>
-    <p>La mémoire de notre village se construit avec les témoignages, les actions et l'engagement de chaque génération.</p>
-  </section>
 
-  <section class="section section-soft" id="atouts">
-    <div class="section-heading">
-      <span class="section-kicker">NOS RICHESSES</span>
-      <h2>Les atouts du village</h2>
-      <p>Les éléments qui participent à l'identité et au développement de Koffi-Agrokro.</p>
-    </div>
-    <div class="cards-grid">
-      <article class="info-card"><span class="card-icon"><img src="./images-des 4 points fort du village/quelle_est_l_importance_de_l_environnement_208_1200.jpg" alt=""></span><h3>Environnement</h3><p>Notre cadre de vie, nos terres et notre environnement naturel.</p></article>
-      <article class="info-card"><span class="card-icon"><img src="./images-des 4 points fort du village/images solidarité.jfif" alt=""></span><h3>Solidarité</h3><p>L'entraide et les liens entre les familles et les habitants.</p></article>
-      <article class="info-card"><span class="card-icon"><img src="./images-des 4 points fort du village/image traduiction.jfif" alt=""></span><h3>Traditions</h3><p>Nos coutumes, notre culture et les valeurs transmises.</p></article>
-      <article class="info-card"><span class="card-icon"><img src="./images-des 4 points fort du village/DkqXWsr8dvwzZQaUy1-ydr_pdPg7AU3ATLetHUNDrSPKeOyPLeaF0VZcj3GGgXu97zToTgZEWWBI-z93fhUKw6zXZFhmLrumJ4GzpgueuHVxMWi_8OalsSHj6G4bNTASfO_toPvOSxvvFx1BhcMysnUgX6D.jfif" alt=""></span><h3>Développement</h3><p>Les initiatives et les projets pour l'avenir du village.</p></article>
-    </div>
-  </section>
+      <span class="section-kicker light-kicker">
+        RESTONS EN CONTACT
+      </span>
 
-  <section class="section" id="quartiers">
-    <div class="section-heading">
-      <span class="section-kicker">NOTRE ORGANISATION</span>
-      <h2>Les quartiers du village</h2>
-      <p>Retrouvez ici les différents quartiers de Koffi-Agrokro.</p>
-    </div>
-    <div class="cards-grid">
-      <article class="info-card"><span class="card-icon"><img src="./les quartier du village/0611117789547-web-tete.jpg" alt=""></span><h3>Quartier 1</h3><p>Présentation et informations à compléter.</p></article>
-      <article class="info-card"><span class="card-icon"><img src="./les quartier du village/BGS2D3MJI4YVUM65PBINSFQZBI.jpg" alt=""></span><h3>Quartier 2</h3><p>Présentation et informations à compléter.</p></article>
-      
-  </section>
+      <h2>
+        Participons ensemble à la valorisation de Koffi-Agrokro.
+      </h2>
 
-  <section class="section section-soft" id="autorites">
-    <div class="section-heading">
-      <span class="section-kicker">GOUVERNANCE LOCALE</span>
-      <h2>Les autorités du village</h2>
-      <p>Les représentants et responsables qui contribuent à la vie communautaire.</p>
-    </div>
-    <div class="leaders-grid">
-      <article class="leader-card">
-        <div class="portrait-placeholder"><img src="./Les autorités du village/67c6cdfc123db_galerie_54968.jpg" alt="Président du village"></div>
-        <div class="leader-info"><span class="role">PRÉSIDENT DU VILLAGE</span><h3>Nom à compléter</h3><p>Présentation du président et de ses responsabilités.</p></div>
-      </article>
-      <article class="leader-card">
-        <div class="portrait-placeholder"><img src="./Les autorités du village/Les-chefs-de-quartier.jpg" alt="Chef de quartier"></div>
-        <div class="leader-info"><span class="role">CHEF DE QUARTIER</span><h3>Nom à compléter</h3><p>Présentation des responsables des quartiers.</p></div>
-      </article>
-      <article class="leader-card">
-        <div class="portrait-placeholder"><img src="./Les autorités du village/representatnt.jpg" alt="Représentants"></div>
-        <div class="leader-info"><span class="role">REPRÉSENTANTS</span><h3>À compléter</h3><p>Présentation des représentants de la communauté.</p></div>
-      </article>
-    </div>
-  </section>
+      <p>
+        Vous possédez des informations, des photos ou des souvenirs
+        concernant le village ? Contactez les responsables du site.
+      </p>
 
-  <section class="section memorial-section" id="memorial">
-    <div class="section-heading">
-      <span class="section-kicker">DEVOIR DE MÉMOIRE</span>
-      <h2>À la mémoire de nos disparus</h2>
-      <p>Nous rendons hommage aux personnes qui ont marqué l'histoire de Koffi-Agrokro.</p>
     </div>
 
-    <div class="memorial-tools">
-      <input id="memorialSearch" type="search" placeholder="Rechercher par nom ou quartier..." aria-label="Rechercher une personne">
-      <span id="memorialCount">0 hommage</span>
+
+    <div class="contact-box">
+
+      <h3>Nous contacter</h3>
+
+      <p>
+        Pour transmettre une information ou proposer un hommage,
+        rapprochez-vous de l'équipe chargée du site.
+      </p>
+
+      <a
+        class="button button-gold"
+        href="mailto:contact@koffi-agrokro.ci"
+      >
+        Envoyer un message
+      </a>
+
     </div>
 
-    <div class="memorial-grid" id="memorialGrid">
-      <div class="empty-state">Les hommages validés apparaîtront ici.</div>
-    </div>
+  </div>
 
-    <p class="privacy-note">Les informations et photographies sont publiées dans le respect des familles et après validation des informations communiquées.</p>
-  </section>
+</section>
 
-  <section class="contact-section" id="contact">
-    <div class="contact-inner">
-      <div>
-        <span class="section-kicker light-kicker">RESTONS EN CONTACT</span>
-        <h2>Participons ensemble à la valorisation de Koffi-Agrokro.</h2>
-        <p>Vous possédez des informations, des photos ou des souvenirs concernant le village ? Contactez les responsables du site.</p>
-      </div>
-      <div class="contact-box">
-        <h3>Nous contacter</h3>
-        <p>Pour transmettre une information ou proposer un hommage, rapprochez-vous de l'équipe chargée du site.</p>
-        <a class="button button-gold" href="mailto:contact@koffi-agrokro.ci">Envoyer un message</a>
-      </div>
-    </div>
-  </section>
 </main>
 
+
+<!-- ================= FOOTER ================= -->
+
 <footer>
-  <span class="footer-brand"><strong>KOFFI-AGROKRO</strong> — Notre village, notre fierté</span>
-  <span>© <span id="year"></span> Tous droits réservés.</span>
+
+  <span class="footer-brand">
+    <strong>KOFFI-AGROKRO</strong> — Notre village, notre fierté
+  </span>
+
+  <span>
+    © <span id="year"></span> Tous droits réservés.
+  </span>
+
   <a href="admin.html">Administration</a>
+
 </footer>
 
-<script src="script.js"></script>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<!-- Script général du site -->
+<script src="./script.js"></script>
+
+<!-- Bibliothèque officielle Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Connexion et fonctionnement des suggestions -->
+<script src="./suggestions.js"></script>
+
 </body>
 </html>
