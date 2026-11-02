@@ -1,45 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administration | Koffi-Agrokro</title>
-  <link rel="stylesheet" href="./admin-style.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./admin.css">
 </head>
 <body>
 
   <div class="admin-container">
-
-    <!-- En-tête -->
     <header class="admin-header">
       <div>
         <span class="espace-gestion">ESPACE DE GESTION</span>
         <h1>Administration du site</h1>
         <p>Gestion des fiches commémoratives de Koffi-Agrokro.</p>
       </div>
-      <a href="./index.html" class="btn-retour">&larr; Retour au site</a>
+      <a href="./index.html" class="btn-retour">← Retour au site</a>
     </header>
 
-    <!-- Carte principale : Formulaire d'ajout -->
     <main class="admin-card">
-      <h2>Ajouter une personne disparue</h2>
+      <h2 id="formTitle">Ajouter une personne disparue</h2>
 
       <div class="alert-box">
-        Veuillez vérifier les informations et obtenir l'accord de la famille avant de publier une photo ou un hommage.
+        Veuillez vérifier les informations et obtenir l'accord de la famille
+        avant de publier une photo ou un hommage.
       </div>
 
       <form id="form-commemoratif">
+        <input type="hidden" id="fiche-id">
+
         <div class="form-row">
           <div class="form-group">
-            <label for="nom">Nom et prénoms</label>
+            <label for="nom">Nom et prénoms *</label>
             <input type="text" id="nom" placeholder="Ex. Koffi Yao" required>
           </div>
+
           <div class="form-group">
-            <label for="quartier">Quartier</label>
+            <label for="quartier">Quartier *</label>
             <select id="quartier" required>
               <option value="">Choisir le quartier</option>
-              <option value="quartier-1">Quartier 1</option>
-              <option value="quartier-2">Quartier 2</option>
+              <option value="Quartier 1">Quartier 1</option>
+              <option value="Quartier 2">Quartier 2</option>
+              <option value="Koffi-Agrokro">Koffi-Agrokro</option>
             </select>
           </div>
         </div>
@@ -49,6 +53,7 @@
             <label for="date-naissance">Date de naissance</label>
             <input type="date" id="date-naissance">
           </div>
+
           <div class="form-group">
             <label for="date-deces">Date de décès</label>
             <input type="date" id="date-deces">
@@ -56,27 +61,49 @@
         </div>
 
         <div class="form-group full-width">
-          <label for="chemin-photo">Chemin de la photo</label>
-          <input type="text" id="chemin-photo" placeholder="images/koffi-yao.jpg">
+          <label for="chemin-photo">Chemin ou adresse de la photo</label>
+          <input type="text" id="chemin-photo"
+                 placeholder="images/koffi-yao.jpg">
         </div>
 
         <div class="form-group full-width">
           <label for="message">Message d'hommage</label>
-          <textarea id="message" rows="4" placeholder="Écrire quelques mots en mémoire de cette personne..."></textarea>
+          <textarea id="message" rows="5"
+                    placeholder="Écrire quelques mots en mémoire de cette personne..."></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Enregistrer la fiche</button>
+        <div class="form-actions">
+          <button type="submit" class="btn-submit" id="submitButton">
+            Enregistrer la fiche
+          </button>
+          <button type="button" class="btn-cancel" id="cancelEdit" hidden>
+            Annuler la modification
+          </button>
+        </div>
+
+        <p id="adminMessage" role="status"></p>
       </form>
     </main>
 
-    <!-- Carte secondaire : Liste des fiches -->
     <section class="admin-card">
-      <h2>Personnes enregistrées</h2>
-      <p class="section-subtitle">Les fiches ci-dessous sont celles enregistrées dans ce navigateur.</p>
-      <p class="empty-text">Aucune fiche enregistrée pour le moment.</p>
+      <div class="list-header">
+        <div>
+          <h2>Personnes enregistrées</h2>
+          <p class="section-subtitle">
+            Gestion des fiches commémoratives enregistrées dans ce navigateur.
+          </p>
+        </div>
+        <span class="total-count" id="totalFiches">0 fiche</span>
+      </div>
+
+      <div id="liste-personnes" class="liste-personnes"></div>
     </section>
-
   </div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./admin-auth.js"></script>
+<script src="./admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./admin-auth.js"></script>
+<script src="./admin.js"></script>
 </body>
 </html>

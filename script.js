@@ -1,41 +1,54 @@
 
-// =====================================
+// =============================================
 // KOFFI-AGROKRO - SCRIPT GENERAL
-// =====================================
+// =============================================
 
-const KEY = 'koffiAgrokroMemorialsV1';
+// Clé utilisée pour enregistrer les hommages
+const KEY = "koffiAgrokroMemorialsV1";
 
+// Sélecteur simplifié
 const $ = selector => document.querySelector(selector);
 
-// =====================================
-// GESTION DES HOMMAGES
-// =====================================
+
+// =============================================
+// LECTURE DES HOMMAGES
+// =============================================
 
 function readPeople() {
     try {
-        return JSON.parse(localStorage.getItem(KEY) || '[]');
-    } catch {
+        const data = JSON.parse(localStorage.getItem(KEY) || "[]");
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        console.error("Erreur de lecture des hommages :", error);
         return [];
     }
 }
 
-// Protection du contenu HTML
-function escapeHTML(value = '') {
+
+// =============================================
+// PROTECTION DU CONTENU HTML
+// =============================================
+
+function escapeHTML(value = "") {
     return String(value).replace(/[&<>"']/g, char => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
     }[char]));
 }
 
-// Calcul de l'âge au décès
+
+// =============================================
+// CALCUL DE L'ÂGE AU DÉCÈS
+// =============================================
+
 function calculateAge(birth, death) {
     if (!birth || !death) return null;
 
-    const b = new Date(birth + 'T00:00:00');
-    const d = new Date(death + 'T00:00:00');
+    const b = new Date(birth + "T00:00:00");
+    const d = new Date(death + "T00:00:00");
 
     if (
         Number.isNaN(b.getTime()) ||
@@ -60,39 +73,47 @@ function calculateAge(birth, death) {
     return age;
 }
 
-// Formatage des dates
-function formatDate(date) {
-    if (!date) return 'Non renseignée';
 
-    const value = new Date(date + 'T00:00:00');
+// =============================================
+// FORMATAGE DES DATES
+// =============================================
+
+function formatDate(date) {
+    if (!date) return "Non renseignée";
+
+    const value = new Date(date + "T00:00:00");
 
     if (Number.isNaN(value.getTime())) {
-        return 'Non renseignée';
+        return "Non renseignée";
     }
 
-    return value.toLocaleDateString('fr-FR');
+    return value.toLocaleDateString("fr-FR");
 }
 
-// Affichage du mémorial
+
+// =============================================
+// AFFICHAGE DU MÉMORIAL
+// =============================================
+
 function renderMemorial() {
 
-    const grid = $('#memorialGrid');
-    const search = $('#memorialSearch');
-    const count = $('#memorialCount');
+    const grid = $("#memorialGrid");
+    const search = $("#memorialSearch");
+    const count = $("#memorialCount");
 
     if (!grid) return;
 
     const query = search
         ? search.value.trim().toLowerCase()
-        : '';
+        : "";
 
     const people = readPeople().filter(person => {
 
         const text = [
-            person.name || '',
-            person.quartier || '',
-            person.place || ''
-        ].join(' ').toLowerCase();
+            person.name || "",
+            person.quartier || "",
+            person.place || ""
+        ].join(" ").toLowerCase();
 
         return text.includes(query);
     });
@@ -100,25 +121,25 @@ function renderMemorial() {
     if (count) {
         count.textContent =
             people.length +
-            (people.length > 1 ? ' hommages' : ' hommage');
+            (people.length > 1 ? " hommages" : " hommage");
     }
 
     if (!people.length) {
         grid.innerHTML = `
             <div class="empty-state">
-                Aucune fiche trouvée.
-                Les hommages validés apparaîtront ici.
+                Aucun hommage enregistré pour le moment.
             </div>
         `;
         return;
     }
 
+    // Regroupement par quartier
     const groups = {};
 
     people.forEach(person => {
 
         const quartier =
-            person.quartier || 'Quartier non renseigné';
+            person.quartier || "Quartier non renseigné";
 
         if (!groups[quartier]) {
             groups[quartier] = [];
@@ -128,9 +149,10 @@ function renderMemorial() {
     });
 
     const sortedQuartiers = Object.keys(groups).sort(
-        (a, b) => a.localeCompare(b, 'fr', { numeric: true })
+        (a, b) => a.localeCompare(b, "fr", { numeric: true })
     );
 
+    // Création des cartes
     grid.innerHTML = sortedQuartiers.map(quartier => {
 
         const cards = groups[quartier].map(person => {
@@ -145,7 +167,7 @@ function renderMemorial() {
                     <img
                         class="memorial-photo"
                         src="${escapeHTML(person.photo)}"
-                        alt="Portrait de ${escapeHTML(person.name || 'la personne honorée')}"
+                        alt="Portrait de ${escapeHTML(person.name || "la personne honorée")}"
                         loading="lazy"
                     >
                 `
@@ -162,32 +184,31 @@ function renderMemorial() {
 
                     <div class="memorial-info">
 
-                        <h3>${escapeHTML(person.name || 'Nom non renseigné')}</h3>
+                        <h3>${escapeHTML(person.name || "Nom non renseigné")}</h3>
 
                         <p>
-                            Naissance :
+                            <strong>Naissance :</strong>
                             ${formatDate(person.birth)}
                         </p>
 
                         <p>
-                            Décès :
+                            <strong>Décès :</strong>
                             ${formatDate(person.death)}
                         </p>
 
                         <p>
-                            <strong>
-                                ${
-                                    age === null
-                                        ? 'Âge non calculable'
-                                        : age + ' ans'
-                                }
-                            </strong>
+                            <strong>Âge :</strong>
+                            ${
+                                age === null
+                                    ? "Non calculable"
+                                    : age + " ans"
+                            }
                         </p>
 
                         ${
                             person.note
                                 ? `<p>${escapeHTML(person.note)}</p>`
-                                : ''
+                                : ""
                         }
 
                     </div>
@@ -195,7 +216,7 @@ function renderMemorial() {
                 </article>
             `;
 
-        }).join('');
+        }).join("");
 
         return `
             <section class="memorial-group">
@@ -211,57 +232,68 @@ function renderMemorial() {
             </section>
         `;
 
-    }).join('');
+    }).join("");
 }
 
-// Recherche dans le mémorial
-const searchInput = $('#memorialSearch');
+
+// =============================================
+// RECHERCHE DES PERSONNES
+// =============================================
+
+const searchInput = $("#memorialSearch");
 
 if (searchInput) {
-    searchInput.addEventListener('input', renderMemorial);
+    searchInput.addEventListener("input", renderMemorial);
 }
 
-// Actualisation des hommages entre onglets
-window.addEventListener('storage', event => {
+
+// =============================================
+// ACTUALISATION ENTRE LES ONGLETS
+// =============================================
+
+window.addEventListener("storage", event => {
+
     if (event.key === KEY) {
         renderMemorial();
     }
+
 });
 
-// =====================================
-// MENU MOBILE
-// =====================================
 
-const menuToggle = $('#menuToggle');
-const mainNav = $('#mainNav');
+// =============================================
+// MENU MOBILE
+// =============================================
+
+const menuToggle = $("#menuToggle");
+const mainNav = $("#mainNav");
 
 if (menuToggle && mainNav) {
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener("click", () => {
 
-        const isOpen = mainNav.classList.toggle('open');
+        const isOpen = mainNav.classList.toggle("open");
 
         menuToggle.setAttribute(
-            'aria-expanded',
+            "aria-expanded",
             String(isOpen)
         );
 
-        menuToggle.textContent = isOpen ? '✕' : '☰';
+        menuToggle.textContent = isOpen ? "✕" : "☰";
 
     });
 
-    mainNav.querySelectorAll('a').forEach(link => {
+    mainNav.querySelectorAll("a").forEach(link => {
 
-        link.addEventListener('click', () => {
+        link.addEventListener("click", () => {
 
-            mainNav.classList.remove('open');
+            mainNav.classList.remove("open");
 
             menuToggle.setAttribute(
-                'aria-expanded',
-                'false'
+                "aria-expanded",
+                "false"
             );
 
-            menuToggle.textContent = '☰';
+            menuToggle.textContent = "☰";
 
         });
 
@@ -269,18 +301,20 @@ if (menuToggle && mainNav) {
 
 }
 
-// =====================================
-// ANNEE AUTOMATIQUE
-// =====================================
 
-const year = $('#year');
+// =============================================
+// ANNÉE AUTOMATIQUE
+// =============================================
+
+const year = $("#year");
 
 if (year) {
     year.textContent = new Date().getFullYear();
 }
 
-// =====================================
+
+// =============================================
 // AFFICHAGE INITIAL
-// =====================================
+// =============================================
 
 renderMemorial();

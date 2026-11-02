@@ -3,47 +3,90 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Suggestions publiées | Koffi-Agrokro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les suggestions et commentaires des habitants de Koffi-Agrokro.">
+  <title>Suggestions et commentaires | Koffi-Agrokro</title>
+
   <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
+
 <header class="site-header">
   <a class="brand" href="./index.html">KOFFI-AGROKRO</a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
-  <nav id="mainNav">
-   <a href="#accueil">Accueil</a>
-    <a href="#village">Le village</a>
-    <a href="#atouts">Nos atouts</a>
-    <a href="#quartiers">Quartiers</a>
-    <a href="#autorites">Autorités</a>
-    <a href="#memorial">Mémoire</a>
-    <a href="#contact">Contact</a>
-    <a href="#suggestion">Suggestion</a>
-  </nav>
+
+  <button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="Ouvrir le menu"
+    aria-expanded="false">
+    ☰
+  </button>
+
+ <nav id="mainNav">
+  <a href="./index.html#accueil">Accueil</a>
+  <a href="./index.html#village">Le village</a>
+  <a href="./index.html#atouts">Nos atouts</a>
+  <a href="./index.html#quartiers">Quartiers</a>
+  <a href="./index.html#autorites">Autorités</a>
+  <a href="./index.html#memorial">Nos disparus</a>
+  <a href="./index.html#contact">Contact</a>
+  <a href="./index.html#suggestion">Suggestions</a>
+</nav>
 </header>
 
 <main class="section">
+
   <div class="section-heading">
     <span class="eyebrow">La parole aux habitants</span>
     <h1>Suggestions et commentaires</h1>
   </div>
-  <p>Consultez les messages validés et participez aux échanges autour de la vie du village.</p>
 
-  <div id="publishedSuggestions" class="cards" aria-live="polite">
+  <p>
+    Consultez les suggestions validées et participez aux échanges
+    pour contribuer au développement de Koffi-Agrokro.
+  </p>
+
+  <div
+    id="publishedSuggestions"
+    class="cards"
+    aria-live="polite">
+
     <p>Chargement des suggestions...</p>
+
   </div>
 
-  <a class="button button-dark" href="./index.html#suggestions">Envoyer une suggestion</a>
-  <a class="button" href="./index.html">Retour à l'accueil</a>
+  <div class="section-actions">
+    <a
+      class="button button-dark"
+      href="./index.html#suggestions">
+      Envoyer une suggestion
+    </a>
+
+    <a
+      class="button"
+      href="./index.html">
+      Retour à l'accueil
+    </a>
+  </div>
+
 </main>
 
 <footer class="site-footer">
-  <p>© <span id="currentYear"></span> Koffi-Agrokro</p>
+  <p>
+    © <span id="currentYear"></span> Koffi-Agrokro.
+    Tous droits réservés.
+  </p>
+
   <a href="./admin.html">Administration</a>
 </footer>
 
+<!-- Connexion Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./script.js"></script>
+
+<!-- JavaScript de cette page -->
+<script src="./suggestions.js"></script>
+
 </body>
 </html>

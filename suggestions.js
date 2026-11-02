@@ -1,15 +1,19 @@
 
 /* =========================================
-   CONFIGURATION SUPABASE
+   CONNEXION À SUPABASE
 ========================================= */
 
-const SUPABASE_URL = "COLLE_ICI_TON_PROJECT_URL";
-const SUPABASE_ANON_KEY = "COLLE_ICI_TA_CLE_PUBLIQUE";
+const SUPABASE_URL = "https://whloiwfehqbhscilssbx.supabase.co";
+
+const SUPABASE_ANON_KEY = "sb_publishable_0nR5whwcOoke1vflByOcEQ_gArsisLh";
 
 const db = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
 );
+
+console.log("Connexion Supabase prête !");
+
 
 /* =========================================
    INITIALISATION
@@ -17,23 +21,118 @@ const db = window.supabase.createClient(
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Année automatique
   const year = document.getElementById("currentYear");
 
   if (year) {
     year.textContent = new Date().getFullYear();
   }
 
+  // Menu mobile
   const toggle = document.getElementById("menuToggle");
   const nav = document.getElementById("mainNav");
 
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
-      nav.classList.toggle("open");
+      const ouvert = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", ouvert);
     });
   }
 
+  // Formulaire d'envoi d'une suggestion
+  const formulaire = document.getElementById("suggestionForm");
+
+  if (formulaire) {
+    formulaire.addEventListener("submit", envoyerSuggestion);
+  }
+
+  // Bouton d'actualisation des suggestions
+  const refresh = document.getElementById("refreshSuggestions");
+
+  if (refresh) {
+    refresh.addEventListener("click", chargerSuggestionsPubliees);
+  }
+
+  // Charger les suggestions publiées
   chargerSuggestionsPubliees();
+
 });
+
+
+/* =========================================
+   ENVOYER UNE NOUVELLE SUGGESTION
+========================================= */
+
+async function envoyerSuggestion(event) {
+
+  event.preventDefault();
+
+  const formulaire = event.currentTarget;
+
+  const nomChamp = document.getElementById("suggestionNom");
+  const messageChamp = document.getElementById("suggestionContenu");
+  const bouton = document.getElementById("suggestionButton");
+  const feedback = document.getElementById("suggestionMessage");
+
+  if (!nomChamp || !messageChamp || !feedback) {
+    return;
+  }
+
+  const nom = nomChamp.value.trim();
+  const message = messageChamp.value.trim();
+
+  if (!nom || !message) {
+    feedback.textContent = "Veuillez remplir votre nom et votre suggestion.";
+    return;
+  }
+
+  if (nom.length > 100 || message.length > 2000) {
+    feedback.textContent = "Votre nom ou votre message est trop long.";
+    return;
+  }
+
+  if (bouton) {
+    bouton.disabled = true;
+  }
+
+  feedback.textContent = "Envoi de votre suggestion...";
+
+  try {
+
+    const { error } = await db
+      .from("suggestions")
+      .insert({
+        nom: nom,
+        message: message,
+        status: "pending"
+      });
+
+    if (error) {
+      throw error;
+    }
+
+    formulaire.reset();
+
+    feedback.textContent =
+      "Merci ! Votre suggestion a été envoyée et attend la validation de l'administration.";
+
+  } catch (error) {
+
+    console.error("Erreur lors de l'envoi :", error);
+
+    feedback.textContent =
+      "Impossible d'envoyer votre suggestion. Réessayez plus tard.";
+
+  } finally {
+
+    if (bouton) {
+      bouton.disabled = false;
+    }
+
+  }
+
+}
+
 
 /* =========================================
    CHARGER LES SUGGESTIONS PUBLIÉES
@@ -41,7 +140,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function chargerSuggestionsPubliees() {
 
-  const zone = document.getElementById("publishedSuggestions");
+  const zone =
+    document.getElementById("publishedSuggestions") ||
+    document.getElementById("suggestionList");
+
+  if (!zone) {
+    return;
+  }
 
   zone.textContent = "Chargement des suggestions...";
 
@@ -53,7 +158,9 @@ async function chargerSuggestionsPubliees() {
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
-    if (error) throw error;
+    if (error) {
+      throw error;
+    }
 
     zone.replaceChildren();
 
@@ -68,12 +175,12 @@ async function chargerSuggestionsPubliees() {
       carte.className = "message-card";
 
       const titre = document.createElement("h3");
-      titre.textContent = suggestion.type || "Message";
+      titre.textContent = suggestion.type || "Suggestion";
 
       const auteur = document.createElement("p");
       auteur.className = "muted";
       auteur.textContent =
-        "Publié par : " + (suggestion.nom || "Anonyme");
+        "Proposé par : " + (suggestion.nom || "Anonyme");
 
       const message = document.createElement("p");
       message.className = "message-text";
@@ -81,6 +188,7 @@ async function chargerSuggestionsPubliees() {
 
       const date = document.createElement("p");
       date.className = "status";
+
       date.textContent = suggestion.created_at
         ? "Date : " +
           new Date(suggestion.created_at).toLocaleDateString("fr-FR")
@@ -102,6 +210,7 @@ async function chargerSuggestionsPubliees() {
       );
 
       await chargerReponses(suggestion.id, listeReponses);
+
 
       // Formulaire de réponse
       const formulaire = document.createElement("form");
@@ -153,6 +262,11 @@ async function chargerSuggestionsPubliees() {
           return;
         }
 
+        if (nom.length > 100 || texte.length > 2000) {
+          feedback.textContent = "Votre nom ou votre réponse est trop long.";
+          return;
+        }
+
         bouton.disabled = true;
         feedback.textContent = "Envoi de votre réponse...";
 
@@ -167,7 +281,9 @@ async function chargerSuggestionsPubliees() {
               status: "pending"
             });
 
-          if (error) throw error;
+          if (error) {
+            throw error;
+          }
 
           formulaire.reset();
 
@@ -176,18 +292,22 @@ async function chargerSuggestionsPubliees() {
 
         } catch (error) {
 
-          console.error(error);
+          console.error("Erreur réponse :", error);
 
           feedback.textContent =
             "Impossible d'envoyer votre réponse. Réessayez plus tard.";
 
+        } finally {
+
+          bouton.disabled = false;
+
         }
 
-        bouton.disabled = false;
       });
 
       carte.appendChild(formulaire);
       zone.appendChild(carte);
+
     }
 
   } catch (error) {
@@ -196,8 +316,11 @@ async function chargerSuggestionsPubliees() {
 
     zone.textContent =
       "Impossible de charger les suggestions. Vérifiez la configuration Supabase.";
+
   }
+
 }
+
 
 /* =========================================
    CHARGER LES RÉPONSES PUBLIÉES
@@ -216,13 +339,17 @@ async function chargerReponses(suggestionId, zone) {
 
   if (error) {
 
-    console.error(error);
+    console.error("Erreur réponses :", error);
+
     zone.textContent = "Impossible de charger les réponses.";
+
     return;
   }
 
   if (!data || data.length === 0) {
+
     zone.textContent = "Aucune réponse pour le moment.";
+
     return;
   }
 
@@ -238,6 +365,9 @@ async function chargerReponses(suggestionId, zone) {
     texte.textContent = reponse.message || "";
 
     element.append(auteur, texte);
+
     zone.appendChild(element);
+
   });
+
 }
