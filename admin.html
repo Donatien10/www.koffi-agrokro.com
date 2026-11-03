@@ -11,12 +11,14 @@
 <body>
 
   <div class="admin-container">
+
     <header class="admin-header">
       <div>
         <span class="espace-gestion">ESPACE DE GESTION</span>
         <h1>Administration du site</h1>
         <p>Gestion des fiches commémoratives de Koffi-Agrokro.</p>
       </div>
+
       <a href="./index.html" class="btn-retour">← Retour au site</a>
     </header>
 
@@ -34,7 +36,12 @@
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom et prénoms *</label>
-            <input type="text" id="nom" placeholder="Ex. Koffi Yao" required>
+            <input
+              type="text"
+              id="nom"
+              placeholder="Ex. Koffi Yao"
+              required
+            >
           </div>
 
           <div class="form-group">
@@ -62,21 +69,37 @@
 
         <div class="form-group full-width">
           <label for="chemin-photo">Chemin ou adresse de la photo</label>
-          <input type="text" id="chemin-photo"
-                 placeholder="images/koffi-yao.jpg">
+          <input
+            type="text"
+            id="chemin-photo"
+            placeholder="images/koffi-yao.jpg"
+          >
         </div>
 
         <div class="form-group full-width">
           <label for="message">Message d'hommage</label>
-          <textarea id="message" rows="5"
-                    placeholder="Écrire quelques mots en mémoire de cette personne..."></textarea>
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Écrire quelques mots en mémoire de cette personne..."
+          ></textarea>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn-submit" id="submitButton">
+          <button
+            type="submit"
+            class="btn-submit"
+            id="submitButton"
+          >
             Enregistrer la fiche
           </button>
-          <button type="button" class="btn-cancel" id="cancelEdit" hidden>
+
+          <button
+            type="button"
+            class="btn-cancel"
+            id="cancelEdit"
+            hidden
+          >
             Annuler la modification
           </button>
         </div>
@@ -90,20 +113,22 @@
         <div>
           <h2>Personnes enregistrées</h2>
           <p class="section-subtitle">
-            Gestion des fiches commémoratives enregistrées dans ce navigateur.
+            Gestion des fiches commémoratives.
           </p>
         </div>
+
         <span class="total-count" id="totalFiches">0 fiche</span>
       </div>
 
       <div id="liste-personnes" class="liste-personnes"></div>
     </section>
+
   </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./admin-auth.js"></script>
-<script src="./admin.js"></script>
+
+  <!-- Connexion à Supabase et vérification de l'administrateur -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="./admin-auth.js"></script>
-<script src="./admin.js"></script>
+  <script src="./admin-auth.js"></script>
+  <script src="./admin.js"></script>
+
 </body>
 </html>
