@@ -99,16 +99,17 @@ button {
 }
 
 .brand-mark {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  display: inline-block;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: var(--green);
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-  font-weight: 700;
+  background-image: url("./logo/logo\ du\ village.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  font-size: 0;
 }
 
 .brand strong {
@@ -276,7 +277,7 @@ button {
       rgba(16, 47, 37, 0.75),
       rgba(16, 47, 37, 0.05)
     ),
-    url("./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png")
+    url("./masque.jfif")
     center / cover no-repeat;
 }
 
@@ -1215,4 +1216,10 @@ body {
     #personForm {
         grid-template-columns: 1fr;
     }
+}
+#accueil {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
 }

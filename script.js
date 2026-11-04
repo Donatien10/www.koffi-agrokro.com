@@ -318,3 +318,26 @@ if (year) {
 // =============================================
 
 renderMemorial();
+document.addEventListener("DOMContentLoaded", () => {
+    const accueil = document.getElementById("accueil");
+
+    if (!accueil) return;
+
+ const imagesVillage = [
+    "./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png",
+    "./images acceuil/38661747_1652628174862804_3766903459253583872_n.jpg",
+    "./images acceuil/38801291_1652628141529474_6591800060827140096_n.jpg",
+    "./images acceuil/575184897_1562889121817841_7885910233417035186_n.jpg"
+];
+    let index = 0;
+
+    function changerImage() {
+        accueil.style.backgroundImage =
+            `url("${imagesVillage[index]}")`;
+
+        index = (index + 1) % imagesVillage.length;
+    }
+
+    changerImage();
+    setInterval(changerImage, 5000);
+});

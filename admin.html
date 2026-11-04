@@ -8,20 +8,23 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./admin.css">
 </head>
+
 <body>
 
   <div class="admin-container">
 
+    <!-- EN-TÊTE -->
     <header class="admin-header">
       <div>
         <span class="espace-gestion">ESPACE DE GESTION</span>
         <h1>Administration du site</h1>
-        <p>Gestion des fiches commémoratives de Koffi-Agrokro.</p>
+        <p>Gestion des fiches commémoratives et des suggestions de Koffi-Agrokro.</p>
       </div>
 
       <a href="./index.html" class="btn-retour">← Retour au site</a>
     </header>
 
+    <!-- FORMULAIRE DES PERSONNES DISPARUES -->
     <main class="admin-card">
       <h2 id="formTitle">Ajouter une personne disparue</h2>
 
@@ -31,6 +34,7 @@
       </div>
 
       <form id="form-commemoratif">
+
         <input type="hidden" id="fiche-id">
 
         <div class="form-row">
@@ -105,10 +109,13 @@
         </div>
 
         <p id="adminMessage" role="status"></p>
+
       </form>
     </main>
 
+    <!-- LISTE DES PERSONNES ENREGISTRÉES -->
     <section class="admin-card">
+
       <div class="list-header">
         <div>
           <h2>Personnes enregistrées</h2>
@@ -121,14 +128,39 @@
       </div>
 
       <div id="liste-personnes" class="liste-personnes"></div>
+
+    </section>
+
+    <!-- GESTION DES SUGGESTIONS -->
+    <section class="admin-card">
+
+      <div class="list-header">
+        <div>
+          <h2>Suggestions des visiteurs</h2>
+          <p class="section-subtitle">
+            Consultez et gérez les suggestions envoyées par les habitants.
+          </p>
+        </div>
+
+        <span class="total-count" id="totalSuggestions">
+          0 suggestion
+        </span>
+      </div>
+
+      <div id="messageSuggestions" role="status"></div>
+
+      <div id="liste-suggestions">
+        Chargement des suggestions...
+      </div>
+
     </section>
 
   </div>
 
-  <!-- Connexion à Supabase et vérification de l'administrateur -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./admin-auth.js"></script>
-  <script src="./admin.js"></script>
-
+           <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+          <script src="./admin-auth.js"></script>
+             <script src="./admin.js"></script>
+              <script src="./admin-suggestions.js"></script>
 </body>
 </html>
+
