@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail de l'information | Koffi-Agrokro</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #27ae60;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .detail-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .btn-retour {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+      background: #e2e8f0;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .btn-retour:hover {
+      background: #cbd5e1;
+    }
+
+    .detail-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 25px;
+      background-color: #e9ecef;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #e8f5e9;
+      color: var(--secondary-color);
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .date {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .content {
+      font-size: 1.05rem;
+      color: #444;
+      white-space: pre-line; /* Conserve les sauts de ligne du texte saisis dans l'admin */
+    }
+
+    .error-box {
+      text-align: center;
+      padding: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="detail-container">
+    <a href="informations.html" class="btn-retour">← Retour aux informations</a>
+    
+    <div id="detail-content">
+      <p style="text-align: center; color: #777;">Chargement de l'information...</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Récupérer l'ID de l'information dans l'URL (ex: ?id=171...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const infoId = urlParams.get('id');
+
+      // 2. Charger les informations enregistrées depuis le localStorage
+      const informations = JSON.parse(localStorage.getItem("informations_village")) || [];
+
+      // 3. Trouver l'information exacte qui correspond à cet ID
+      const infoTrouvee = informations.find(info => info.id === infoId);
+
+      const container = document.getElementById("detail-content");
+
+      // 4. Si l'information n'existe pas ou a été supprimée
+      if (!infoTrouvee) {
+        container.innerHTML = `
+          <div class="error-box">
+            <h2>Information introuvable</h2>
+            <p style="margin-top: 10px; color: #666;">Cette publication n'existe plus ou a été retirée.</p>
+          </div>
+        `;
+        return;
+      }
+
+      // 5. Afficher les détails complets (Image, Catégorie, Titre, Date, Description)
+      container.innerHTML = `
+        ${infoTrouvee.photo ? `<img src="${infoTrouvee.photo}" alt="${infoTrouvee.titre}" class="detail-img" onerror="this.style.display='none';">` : ''}
+        <span class="badge">${infoTrouvee.categorie || 'Information'}</span>
+        <h1>${infoTrouvee.titre}</h1>
+        <div class="date">Publié le : ${infoTrouvee.date || 'Date non spécifiée'}</div>
+        <div class="content">${infoTrouvee.description}</div>
+      `;
+    });
+  </script>
+
+</body>
+</html>

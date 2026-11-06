@@ -341,3 +341,41 @@ document.addEventListener("DOMContentLoaded", () => {
     changerImage();
     setInterval(changerImage, 5000);
 });
+
+// =============================================
+// DÉFILEMENT DE L'IMAGE DU VILLAGE (QUARTIERS)
+// =============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const villageImg = document.getElementById("villageMainImg");
+
+    if (!villageImg) return;
+
+    // Liste des images qui vont défiler à côté des quartiers
+    const villageImages = [
+        "./les quartier du village/e5bd8bb2-d5b3-40f3-b8ee-789a40f4c249 (1).jpg",
+        "./les quartier du village/0611117789547-web-tete.jpg",
+        "./les quartier du village/BGS2D3MJI4YVUM65PBINSFQZBI.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    // Configuration de la transition fluide (fondu)
+    villageImg.style.transition = "opacity 0.6s ease-in-out";
+
+    function changeVillageImage() {
+        // Effet de fondu sortant
+        villageImg.style.opacity = 0;
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % villageImages.length;
+            villageImg.src = villageImages[currentIndex];
+            
+            // Effet de fondu entrant
+            villageImg.style.opacity = 1;
+        }, 600); // Temps correspondant à la transition CSS
+    }
+
+    // Change l'image toutes les 4 secondes (4000 ms)
+    setInterval(changeVillageImage, 4000);
+});

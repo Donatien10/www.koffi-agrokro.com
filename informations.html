@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations - Koffi-Agrokro</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #27ae60;
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Barre de navigation */
+    header {
+      background-color: var(--primary-color);
+      padding: 1rem 2rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--secondary-color);
+    }
+
+    /* Conteneur principal */
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    /* Grille des fiches d'informations */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Style d'image pour chaque carte d'information */
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background-color: #e9ecef;
+    }
+
+    .card-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+
+    .card-badge {
+      display: inline-block;
+      background-color: #e8f5e9;
+      color: var(--secondary-color);
+      padding: 3px 8px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .card-dates {
+      font-size: 0.85rem;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .card-message {
+      font-size: 0.95rem;
+      color: #444;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      margin-top: 15px;
+      color: var(--secondary-color);
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .empty-message {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: 8px;
+      color: #777;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background-color: #e2e8f0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="./index.html">Accueil</a>
+      <a href="./index.html">Le village</a>
+      <a href="./informations.html" class="active">Informations</a>
+      <a href="./index.html">Nos atouts</a>
+      <a href="./index.html">Quartiers</a>
+      <a href="./index.html">Autorités</a>
+      <a href="./index.html">Mémoire</a>
+      <a href="./index.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Contenu -->
+  <main>
+    <h1 class="page-title">Informations & Actualités</h1>
+    <p class="subtitle">Retrouvez ici les communiqués officiels et annonces importantes du village de Koffi-Agrokro.</p>
+
+    <!-- Zone d'affichage des fiches enregistrées -->
+    <div id="grid-informations" class="grid-container">
+      <!-- Les cartes s'afficheront ici via JavaScript -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; Koffi-Agrokro - Tous droits réservés.</p>
+  </footer>
+
+  <!-- Script d'affichage dynamique relié à l'administration avec image -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("grid-informations");
+
+      // Récupération des informations du village enregistrées depuis l'admin
+      const informations = JSON.parse(localStorage.getItem("informations_village")) || [];
+
+      // Si aucune information n'a été publiée
+      if (informations.length === 0) {
+        container.innerHTML = `
+          <div class="empty-message">
+            <p>Aucune information n'a été publiée pour le moment.</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Génération de l'affichage dynamique avec l'image et le lien de détails
+      container.innerHTML = informations.map(info => `
+        <article class="card" onclick="window.location.href='detail-information.html?id=${info.id}'">
+          <img src="${info.photo || 'images/default.jpg'}" alt="${info.titre}" class="card-img" onerror="this.src='https://via.placeholder.com/300x220?text=Information';">
+          <div class="card-content">
+            <span class="card-badge">${info.categorie || 'Information'}</span>
+            <h2 class="card-title">${info.titre}</h2>
+            ${info.date ? `<p class="card-dates">Publié le : ${info.date}</p>` : ''}
+            <p class="card-message">${info.description ? info.description.substring(0, 100) + '...' : ''}</p>
+            <p class="read-more">Lire la suite →</p>
+          </div>
+        </article>
+      `).join("");
+    });
+  </script>
+</body>
+</html>

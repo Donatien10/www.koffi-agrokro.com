@@ -1,13 +1,9 @@
-
 /* =========================================
    KOFFI-AGROKRO - FEUILLE DE STYLE COMPLETE
 ========================================= */
 
 /* IMPORTATION DES POLICES */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
-
 
 
 /* =========================================
@@ -191,19 +187,26 @@ button {
    ACCUEIL / HERO
 ========================================= */
 
+#accueil {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
 .hero {
-    background:
-        linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
-        url("./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png");
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
+    url("./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png");
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    min-height: 650px;
-    display: flex;
-    align-items: center;
-    color: white;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
 .hero-content {
@@ -269,7 +272,7 @@ button {
   min-height: 440px;
   width: 100%;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   padding: 30px;
   background:
     linear-gradient(
@@ -395,7 +398,7 @@ button {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 22px;
 }
 
@@ -404,6 +407,7 @@ button {
   border: 1px solid var(--border);
   padding: 22px;
   transition: 0.3s;
+  border-radius: 8px;
 }
 
 .info-card:hover {
@@ -411,19 +415,23 @@ button {
   box-shadow: var(--shadow);
 }
 
+/* Conteneur de l'image (Carré Parfait Responsive) */
 .card-icon {
   display: block;
   width: 100%;
-  height: 175px;
+  aspect-ratio: 1 / 1; /* Garantit un ratio 1:1 parfait (carré) */
   margin-bottom: 20px;
   overflow: hidden;
+  border-radius: 8px;
   background: var(--cream);
 }
 
-.card-icon img {
+.card-icon img,
+.info-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Remplis le carré sans déformer la photo */
+  border-radius: 8px;
 }
 
 .info-card h3 {
@@ -436,6 +444,40 @@ button {
 .info-card p {
   font-size: 13px;
   color: var(--muted);
+}
+
+
+/* =========================================
+   SECTION QUARTIERS (CÔTE À CÔTE)
+========================================= */
+
+.quartiers-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.quartiers-content {
+  flex: 1;
+}
+
+.village-main-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.village-main-image img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -853,6 +895,132 @@ footer a:hover {
 
 
 /* =========================================
+   PAGE ADMINISTRATION
+========================================= */
+
+.admin-container {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  border-bottom: 5px solid #d9ad58;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  margin-bottom: 25px;
+}
+
+.admin-header h1 {
+  color: #174b3a;
+  margin: 12px 0;
+  font-size: 30px;
+}
+
+.admin-header p {
+  margin-bottom: 0;
+}
+
+.admin-header a {
+  color: #174b3a;
+  font-weight: bold;
+}
+
+.admin-section {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.admin-section h2 {
+  color: #174b3a;
+  margin-top: 0;
+  border-bottom: 2px solid #d9ad58;
+  padding-bottom: 12px;
+}
+
+#personForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+#personForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: bold;
+  color: #174b3a;
+}
+
+#personForm input,
+#personForm select,
+#personForm textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 7px;
+  font-size: 15px;
+  background: #fff;
+}
+
+#personForm textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#personForm input:focus,
+#personForm select:focus,
+#personForm textarea:focus {
+  outline: none;
+  border-color: #174b3a;
+  box-shadow: 0 0 0 2px rgba(23, 75, 58, 0.12);
+}
+
+#personForm button {
+  grid-column: 1 / -1;
+  background: #174b3a;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 14px 22px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#personForm button:hover {
+  background: #103629;
+}
+
+#adminList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+#adminList > div {
+  background: #faf9f5;
+  border: 1px solid #e6dfd0;
+  border-left: 5px solid #d9ad58;
+  border-radius: 99px;
+  padding: 18px;
+}
+
+#adminList button {
+  padding: 99px 13px;
+  margin: 8px 5px 0 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* =========================================
    RESPONSIVE TABLETTES
 ========================================= */
 
@@ -875,10 +1043,6 @@ footer a:hover {
     padding: 80px 5%;
   }
 
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .suggestion-layout {
     grid-template-columns: 1fr 1.3fr;
   }
@@ -887,10 +1051,23 @@ footer a:hover {
 
 
 /* =========================================
-   RESPONSIVE TELEPHONES
+   RESPONSIVE TELEPHONES ET ÉCRANS INTERMÉDIAIRES
 ========================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
+
+  .quartiers-wrapper {
+    flex-direction: column;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .village-main-image {
+    width: 100%;
+    margin-top: 20px;
+  }
 
   .site-header {
     min-height: 70px;
@@ -996,7 +1173,7 @@ footer a:hover {
 
 
 /* =========================================
-   PETITS ECRANS
+   PETITS ECRANS (MOBILES)
 ========================================= */
 
 @media (max-width: 500px) {
@@ -1020,10 +1197,6 @@ footer a:hover {
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
   }
 
   .leaders-grid {
@@ -1069,157 +1242,14 @@ footer a:hover {
     padding: 22px;
   }
 
-}
-
-
-/* ===== PAGE ADMINISTRATION KOFFI-AGROKRO ===== */
-
-body {
-    background: #f7f5ef;
-    color: #26352e;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 25px;
-}
-
-.admin-container {
-    max-width: 1050px;
-    margin: 0 auto;
-}
-
-.admin-header {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    border-bottom: 5px solid #d9ad58;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-    margin-bottom: 25px;
-}
-
-.admin-header h1 {
-    color: #174b3a;
-    margin: 12px 0;
-    font-size: 30px;
-}
-
-.admin-header p {
-    margin-bottom: 0;
-}
-
-.admin-header a {
-    color: #174b3a;
-    font-weight: bold;
-}
-
-.admin-section {
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.admin-section h2 {
-    color: #174b3a;
-    margin-top: 0;
-    border-bottom: 2px solid #d9ad58;
-    padding-bottom: 12px;
-}
-
-#personForm {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-#personForm label {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-weight: bold;
-    color: #174b3a;
-}
-
-#personForm input,
-#personForm select,
-#personForm textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    border: 1px solid #d5d5d5;
-    border-radius: 7px;
-    font-size: 15px;
-    background: #fff;
-}
-
-#personForm textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-#personForm input:focus,
-#personForm select:focus,
-#personForm textarea:focus {
-    outline: none;
-    border-color: #174b3a;
-    box-shadow: 0 0 0 2px rgba(23, 75, 58, 0.12);
-}
-
-#personForm button {
-    grid-column: 1 / -1;
-    background: #174b3a;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    padding: 14px 22px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#personForm button:hover {
-    background: #103629;
-}
-
-#adminList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-}
-
-#adminList > div {
-    background: #faf9f5;
-    border: 1px solid #e6dfd0;
-    border-left: 5px solid #d9ad58;
-    border-radius: 9px;
+  .admin-header,
+  .admin-section {
     padding: 18px;
+  }
+
+  #personForm {
+    grid-template-columns: 1fr;
+  }
+
 }
 
-#adminList button {
-    padding: 9px 13px;
-    margin: 8px 5px 0 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-@media (max-width: 650px) {
-    body {
-        padding: 12px;
-    }
-
-    .admin-header,
-    .admin-section {
-        padding: 18px;
-    }
-
-    #personForm {
-        grid-template-columns: 1fr;
-    }
-}
-#accueil {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background-image 1s ease-in-out;
-}

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,7 +17,7 @@
       <div>
         <span class="espace-gestion">ESPACE DE GESTION</span>
         <h1>Administration du site</h1>
-        <p>Gestion des fiches commémoratives et des suggestions de Koffi-Agrokro.</p>
+        <p>Gestion des fiches commémoratives, des informations du village et des suggestions de Koffi-Agrokro.</p>
       </div>
 
       <a href="./index.html" class="btn-retour">← Retour au site</a>
@@ -34,7 +33,6 @@
       </div>
 
       <form id="form-commemoratif">
-
         <input type="hidden" id="fiche-id">
 
         <div class="form-row">
@@ -109,13 +107,72 @@
         </div>
 
         <p id="adminMessage" role="status"></p>
-
       </form>
     </main>
 
+    <!-- FORMULAIRE D'AJOUT D'UNE INFORMATION DU VILLAGE -->
+    <main class="admin-card">
+      <h2>Ajouter une information du village</h2>
+
+      <div class="alert-box">
+        Publiez ici les actualités, communiqués officiels ou annonces importantes pour les habitants.
+      </div>
+
+      <form id="form-information">
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="info-titre">Titre de l'information *</label>
+            <input type="text" id="info-titre" placeholder="Ex. Réunion générale de la chefferie" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="info-date">Date *</label>
+            <input type="date" id="info-date" required>
+          </div>
+          <div class="form-group">
+            <label for="info-categorie">Catégorie *</label>
+            <select id="info-categorie" required>
+              <option value="">Sélectionner une catégorie</option>
+              <option value="Communiqué officiel">Communiqué officiel</option>
+              <option value="Événement">Événement</option>
+              <option value="Projet & Développement">Projet & Développement</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CHAMP DE SÉLECTION DE FICHIER (PIÈCE JOINTE) -->
+        <div class="form-group full-width">
+          <label for="info-photo">Sélectionner une image (pièce jointe)</label>
+          <input type="file" id="info-photo" accept="image/*">
+        </div>
+
+        <div class="form-group full-width">
+          <label for="info-description">Contenu de l'information *</label>
+          <textarea id="info-description" rows="4" placeholder="Écrivez les détails de l'information ici..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Publier l'information</button>
+      </form>
+    </main>
+
+    <!-- LISTE DES INFORMATIONS PUBLIÉES (POUR SUPPRESSION) -->
+    <section class="admin-card">
+      <div class="list-header">
+        <div>
+          <h2>Informations publiées</h2>
+          <p class="section-subtitle">Gérez ou supprimez les informations déjà en ligne sur le site.</p>
+        </div>
+      </div>
+      
+      <div id="adminInformationsList">
+        <p class="empty-text">Aucune information enregistrée pour le moment.</p>
+      </div>
+    </section>
+
     <!-- LISTE DES PERSONNES ENREGISTRÉES -->
     <section class="admin-card">
-
       <div class="list-header">
         <div>
           <h2>Personnes enregistrées</h2>
@@ -128,12 +185,10 @@
       </div>
 
       <div id="liste-personnes" class="liste-personnes"></div>
-
     </section>
 
     <!-- GESTION DES SUGGESTIONS -->
     <section class="admin-card">
-
       <div class="list-header">
         <div>
           <h2>Suggestions des visiteurs</h2>
@@ -152,15 +207,106 @@
       <div id="liste-suggestions">
         Chargement des suggestions...
       </div>
-
     </section>
 
   </div>
 
-           <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-          <script src="./admin-auth.js"></script>
-             <script src="./admin.js"></script>
-              <script src="./admin-suggestions.js"></script>
+  <!-- SCRIPTS EXTERNES -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./admin-auth.js"></script>
+  <script src="./admin.js"></script>
+  <script src="./admin-suggestions.js"></script>
+
+  <!-- SCRIPT DE GESTION ET SUPPRESSION DES INFORMATIONS DU VILLAGE -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const formInfo = document.getElementById("form-information");
+      const adminList = document.getElementById("adminInformationsList");
+
+      // Charger et afficher la liste des informations dans l'admin
+      function chargerAdminInformations() {
+        if (!adminList) return;
+        const infos = JSON.parse(localStorage.getItem("informations_village")) || [];
+
+        if (infos.length === 0) {
+          adminList.innerHTML = `<p class="empty-text" style="color: #888; font-style: italic;">Aucune information enregistrée pour le moment.</p>`;
+          return;
+        }
+
+        adminList.innerHTML = infos.map((info, index) => `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid #eee;">
+            <div>
+              <strong style="color: #1a1a1a; font-size: 15px;">${info.titre}</strong>
+              <span style="font-size: 12px; color: #a67c2e; font-weight: bold; margin-left: 10px;">[${info.categorie}]</span>
+              <span style="font-size: 12px; color: #666; margin-left: 5px;">- ${info.date}</span>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #555;">${info.description.substring(0, 90)}...</p>
+            </div>
+            <button onclick="supprimerInformation(${index})" style="background-color: #d9534f; color: white; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 600;">Supprimer</button>
+          </div>
+        `).join("");
+      }
+
+      // Fonction globale de suppression
+      window.supprimerInformation = function(index) {
+        if (confirm("Voulez-vous vraiment supprimer cette information du site ?")) {
+          let infos = JSON.parse(localStorage.getItem("informations_village")) || [];
+          infos.splice(index, 1);
+          localStorage.setItem("informations_village", JSON.stringify(infos));
+          chargerAdminInformations();
+          alert("L'information a été supprimée avec succès !");
+        }
+      };
+
+      // Soumission du formulaire d'ajout avec gestion de la pièce jointe (fichier image)
+      if (formInfo) {
+        formInfo.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const titre = document.getElementById("info-titre").value;
+          const date = document.getElementById("info-date").value;
+          const categorie = document.getElementById("info-categorie").value;
+          const description = document.getElementById("info-description").value;
+          const photoInput = document.getElementById("info-photo");
+
+          const fichier = photoInput.files[0];
+
+          // Fonction d'enregistrement finale
+          function enregistrerDonnees(photoBase64 = "") {
+            const nouvelleInfo = {
+              id: Date.now().toString(),
+              titre: titre,
+              date: date,
+              categorie: categorie,
+              photo: photoBase64,
+              description: description
+            };
+
+            let informations = JSON.parse(localStorage.getItem("informations_village")) || [];
+            informations.unshift(nouvelleInfo);
+            localStorage.setItem("informations_village", JSON.stringify(informations));
+
+            alert("L'information a été publiée avec succès !");
+            formInfo.reset();
+            chargerAdminInformations();
+          }
+
+          // Si un fichier a été sélectionné, on le convertit en format lisible
+          if (fichier) {
+            const lecteur = new FileReader();
+            lecteur.onload = function(evenement) {
+              enregistrerDonnees(evenement.target.result);
+            };
+            lecteur.readAsDataURL(fichier);
+          } else {
+            enregistrerDonnees("");
+          }
+        });
+      }
+
+      // Premier chargement des infos
+      chargerAdminInformations();
+    });
+  </script>
+
 </body>
 </html>
-
