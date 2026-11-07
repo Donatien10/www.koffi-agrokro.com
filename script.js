@@ -96,7 +96,6 @@ function formatDate(date) {
 // =============================================
 
 function renderMemorial() {
-
     const grid = $("#memorialGrid");
     const search = $("#memorialSearch");
     const count = $("#memorialCount");
@@ -108,7 +107,6 @@ function renderMemorial() {
         : "";
 
     const people = readPeople().filter(person => {
-
         const text = [
             person.name || "",
             person.quartier || "",
@@ -137,7 +135,6 @@ function renderMemorial() {
     const groups = {};
 
     people.forEach(person => {
-
         const quartier =
             person.quartier || "Quartier non renseigné";
 
@@ -154,9 +151,7 @@ function renderMemorial() {
 
     // Création des cartes
     grid.innerHTML = sortedQuartiers.map(quartier => {
-
         const cards = groups[quartier].map(person => {
-
             const age = calculateAge(
                 person.birth,
                 person.death
@@ -179,11 +174,9 @@ function renderMemorial() {
 
             return `
                 <article class="memorial-card">
-
                     ${photo}
 
                     <div class="memorial-info">
-
                         <h3>${escapeHTML(person.name || "Nom non renseigné")}</h3>
 
                         <p>
@@ -210,17 +203,13 @@ function renderMemorial() {
                                 ? `<p>${escapeHTML(person.note)}</p>`
                                 : ""
                         }
-
                     </div>
-
                 </article>
             `;
-
         }).join("");
 
         return `
             <section class="memorial-group">
-
                 <h3 class="memorial-group-title">
                     ${escapeHTML(quartier)}
                 </h3>
@@ -228,10 +217,8 @@ function renderMemorial() {
                 <div class="memorial-group-grid">
                     ${cards}
                 </div>
-
             </section>
         `;
-
     }).join("");
 }
 
@@ -252,11 +239,9 @@ if (searchInput) {
 // =============================================
 
 window.addEventListener("storage", event => {
-
     if (event.key === KEY) {
         renderMemorial();
     }
-
 });
 
 
@@ -268,9 +253,7 @@ const menuToggle = $("#menuToggle");
 const mainNav = $("#mainNav");
 
 if (menuToggle && mainNav) {
-
     menuToggle.addEventListener("click", () => {
-
         const isOpen = mainNav.classList.toggle("open");
 
         menuToggle.setAttribute(
@@ -279,13 +262,10 @@ if (menuToggle && mainNav) {
         );
 
         menuToggle.textContent = isOpen ? "✕" : "☰";
-
     });
 
     mainNav.querySelectorAll("a").forEach(link => {
-
         link.addEventListener("click", () => {
-
             mainNav.classList.remove("open");
 
             menuToggle.setAttribute(
@@ -294,11 +274,8 @@ if (menuToggle && mainNav) {
             );
 
             menuToggle.textContent = "☰";
-
         });
-
     });
-
 }
 
 
@@ -314,36 +291,55 @@ if (year) {
 
 
 // =============================================
-// AFFICHAGE INITIAL
+// DÉFILEMENT AUTOMATIQUE DES IMAGES D'ACCUEIL
 // =============================================
 
-renderMemorial();
 document.addEventListener("DOMContentLoaded", () => {
-    const accueil = document.getElementById("accueil");
+
+    const accueil = document.querySelector("#accueil");
 
     if (!accueil) return;
 
- const imagesVillage = [
+    // LES IMAGES DE LA PAGE D'ACCUEIL
+    const imagesAccueil = [
     "./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png",
-    "./images acceuil/38661747_1652628174862804_3766903459253583872_n.jpg",
-    "./images acceuil/38801291_1652628141529474_6591800060827140096_n.jpg",
-    "./images acceuil/image.jfif"
+    "./831b8e48-253b-41eb-898d-6d93602501a4.jfif",
+    "./d037e192-cfc6-42a3-a68c-522a1481fd43.jfif",
+    "./a6d1dab1-312c-4795-8963-0561a5505670.jfif"
 ];
-    let index = 0;
 
-    function changerImage() {
-        accueil.style.backgroundImage =
-            `url("${imagesVillage[index]}")`;
+    let imageActuelle = 0;
 
-        index = (index + 1) % imagesVillage.length;
+    // Préchargement des images
+    imagesAccueil.forEach(src => {
+        const image = new Image();
+        image.src = src;
+    });
+
+    function changerImageAccueil() {
+
+        accueil.style.backgroundImage = `
+            linear-gradient(
+                rgba(0, 0, 0, 0.50),
+                rgba(0, 0, 0, 0.50)
+            ),
+            url("${imagesAccueil[imageActuelle]}")
+        `;
+
+        imageActuelle =
+            (imageActuelle + 1) % imagesAccueil.length;
     }
 
-    changerImage();
-    setInterval(changerImage, 5000);
+    // Première image
+    changerImageAccueil();
+
+    // Changement toutes les 5 secondes
+    setInterval(changerImageAccueil, 5000);
+
 });
 
 // =============================================
-// DÉFILEMENT DE L'IMAGE DU VILLAGE (QUARTIERS)
+// DÉFILEMENT AUTOMATIQUE DES IMAGES DU VILLAGE
 // =============================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -351,31 +347,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!villageImg) return;
 
-    // Liste des images qui vont défiler à côté des quartiers
+    // LISTE DES IMAGES : Ajoutez vos nouvelles images ici au fur et à mesure !
     const villageImages = [
-        "./les quartier du village/e5bd8bb2-d5b3-40f3-b8ee-789a40f4c249 (1).jpg",
-        "./les quartier du village/0611117789547-web-tete.jpg",
-        "./les quartier du village/BGS2D3MJI4YVUM65PBINSFQZBI.jpg"
+        "./photo pour le site/e5bd8bb2-d5b3-40f3-b8ee-789a40f4c249 (1).jfif", // Image 1 actuelle
+        "./photo pour le site/a1c95f2b-cf51-422b-b6cf-a443e2a65f96.jfif",             // Image 2 à ajouter
+        "./photo pour le site/19d63164-0a1e-4000-b2b0-38ec6fd73ad8.jfif",          // Image 3 à ajouter
+        // Mettez ici d'autres images de votre choix de la même façon :
+        // "./votre-dossier/nom-de-la-photo.jpg",
     ];
 
     let currentIndex = 0;
 
-    // Configuration de la transition fluide (fondu)
+    // Applique un effet de fondu doux
     villageImg.style.transition = "opacity 0.6s ease-in-out";
 
     function changeVillageImage() {
-        // Effet de fondu sortant
+        // Effet de fondu sortant (l'image s'efface)
         villageImg.style.opacity = 0;
 
         setTimeout(() => {
+            // Passe à l'image suivante dans la liste
             currentIndex = (currentIndex + 1) % villageImages.length;
             villageImg.src = villageImages[currentIndex];
             
-            // Effet de fondu entrant
+            // Effet de fondu entrant (la nouvelle image apparaît)
             villageImg.style.opacity = 1;
-        }, 600); // Temps correspondant à la transition CSS
+        }, 600); // Temps de la transition
     }
 
-    // Change l'image toutes les 4 secondes (4000 ms)
+    // Change l'image automatiquement toutes les 4 secondes (4000 millisecondes)
     setInterval(changeVillageImage, 4000);
 });
+
+
+// =============================================
+// ACCORDÉONS
+// =============================================
+
+document.querySelectorAll(".accordion-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const accordion = button.parentElement;
+
+        accordion.classList.toggle("active");
+
+    });
+
+});
+
+
+// =============================================
+// AFFICHAGE INITIAL DU MÉMORIAL
+// =============================================
+
+renderMemorial();
+
