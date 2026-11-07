@@ -1432,3 +1432,32 @@ footer a:hover {
   background: #d9ad58;
   color: #103629;
 }
+.association-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.asso-tab-btn {
+  background-color: var(--primary, #174b3a);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.asso-tab-btn:hover {
+  background-color: #226b53;
+}
+
+.asso-gallery {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fdfbf7;
+  border-radius: 8px;
+  border: 1px solid #e0dbce;
+}

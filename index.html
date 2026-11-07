@@ -202,23 +202,106 @@
     </p>
   </div>
 
-  <!-- ACCORDÉON ASSOCIATIONS -->
+  <!-- ACCORDÉON ASSOCIATIONS CLICQUABLES -->
   <div class="accordion">
     <button
       class="accordion-btn"
       type="button"
       aria-expanded="false"
     >
-      Nos associations
+      Nos associations et leurs galeries
       <span>＋</span>
     </button>
 
     <div class="accordion-content" hidden>
-      <p><strong>MUDEKA</strong></p>
-      <p><strong>JUDKA</strong></p>
-      <p>Commission culturelle</p>
+      <p>Cliquez sur une association pour afficher ses photos :</p>
+      <div class="association-links">
+        <button type="button" class="asso-tab-btn" data-target="mudekaPhotos">MUDEKA</button>
+        <button type="button" class="asso-tab-btn" data-target="judkaPhotos">JUDKA</button>
+        <button type="button" class="asso-tab-btn" data-target="commissionPhotos">Commission culturelle</button>
+      </div>
     </div>
   </div>
+
+  <!-- GALERIE MUDEKA (masquée par défaut) -->
+  <div id="mudekaPhotos" class="asso-gallery" style="display: none;">
+    <h3>Photos de MUDEKA</h3>
+    <div class="cards-grid">
+      <article class="info-card">
+        <span class="card-icon">
+          <img src="./les quartier du village/mudeka-1.jpg" alt="MUDEKA photo 1" loading="lazy">
+        </span>
+        <p>Réunion ou activité de MUDEKA</p>
+      </article>
+      <!-- Ajoutez d'autres cartes info-card ici pour d'autres photos de MUDEKA -->
+    </div>
+  </div>
+
+  <!-- GALERIE JUDKA (masquée par défaut) -->
+  <div id="judkaPhotos" class="asso-gallery" style="display: none;">
+    <h3>Photos de JUDKA</h3>
+    <div class="cards-grid">
+      <article class="info-card">
+        <span class="card-icon">
+          <img src="./les quartier du village/judka-1.jpg" alt="JUDKA photo 1" loading="lazy">
+        </span>
+        <p>Activité de la jeunesse JUDKA</p>
+      </article>
+      <!-- Ajoutez d'autres cartes info-card ici pour d'autres photos de JUDKA -->
+    </div>
+  </div>
+
+  <!-- GALERIE COMMISSION CULTURELLE (masquée par défaut) -->
+  <div id="commissionPhotos" class="asso-gallery" style="display: none;">
+    <h3>Photos de la Commission Culturelle</h3>
+    <div class="cards-grid">
+      <article class="info-card">
+        <span class="card-icon">
+          <img src="./les quartier du village/commission-1.jpg" alt="Commission photo 1" loading="lazy">
+        </span>
+        <p>Cérémonie culturelle</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- LA GRILLE CLASSIQUE DES AUTRES ÉVÉNEMENTS -->
+  <div class="cards-grid" style="margin-top: 30px;">
+
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Lauréat journée de l'excellence.jfif" alt="Journée de l'excellence" loading="lazy">
+      </span>
+      <h3>Journée de l'excellence</h3>
+      <p>Cérémonie dédiée à la valorisation et à l'encouragement du mérite.</p>
+    </article>
+
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Kouadio bah.jfif" alt="Kouadio Bah" loading="lazy">
+      </span>
+      <h3>Kouadio Bah</h3>
+      <p>Figures et repères historiques de notre communauté.</p>
+    </article>
+
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Pâque 2026.jfif" alt="Pâque 2026" loading="lazy">
+      </span>
+      <h3>Pâque 2026</h3>
+      <p>Festivités, retrouvailles et célébrations culturelles de l'année.</p>
+    </article>
+
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Réunion de famille avec la chefferie.jfif" alt="Réunion de famille avec la chefferie" loading="lazy">
+      </span>
+      <h3>Réunion avec la chefferie</h3>
+      <p>Concertation et sagesse autour des traditions et de l'autorité coutumière.</p>
+    </article>
+
+  </div>
+
+</section>
 
   <div class="cards-grid">
 

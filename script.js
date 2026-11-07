@@ -403,3 +403,27 @@ document.querySelectorAll(".accordion-btn").forEach(button => {
 
 renderMemorial();
 
+
+document.addEventListener("DOMContentLoaded", function () {
+  const assoButtons = document.querySelectorAll(".asso-tab-btn");
+  const galleries = document.querySelectorAll(".asso-gallery");
+
+  assoButtons.forEach(button => {
+    button.addEventListener("click", function () {
+      const targetId = this.getAttribute("data-target");
+
+      // Masquer toutes les galeries
+      galleries.qforEach(gallery => {
+        gallery.style.display = "none";
+      });
+
+      // Afficher uniquement la galerie ciblée
+      const targetGallery = document.getElementById(targetId);
+      if (targetGallery) {
+        targetGallery.style.display = "block";
+        // Faire défiler doucement la page vers les photos
+        targetGallery.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+});
