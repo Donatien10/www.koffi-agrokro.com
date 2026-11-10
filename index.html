@@ -202,108 +202,87 @@
     </p>
   </div>
 
-  <!-- ACCORDÉON ASSOCIATIONS CLICQUABLES -->
-  <div class="accordion">
-    <button
-      class="accordion-btn"
-      type="button"
-      aria-expanded="false"
-    >
-      Nos associations et leurs galeries
-      <span>＋</span>
-    </button>
+  <!-- NOS ASSOCIATIONS ET LEURS GALERIES -->
+  <section class="associations-section" id="associations">
 
-    <div class="accordion-content" hidden>
-      <p>Cliquez sur une association pour afficher ses photos :</p>
-      <div class="association-links">
-        <button type="button" class="asso-tab-btn" data-target="mudekaPhotos">MUDEKA</button>
-        <button type="button" class="asso-tab-btn" data-target="judkaPhotos">JUDKA</button>
-        <button type="button" class="asso-tab-btn" data-target="commissionPhotos">Commission culturelle</button>
+    <div class="accordion">
+      <button class="accordion-btn" type="button"
+        aria-expanded="false" aria-controls="associationsContent">
+        Nos associations et leurs galeries
+        <span class="accordion-icon">＋</span>
+      </button>
+
+      <div class="accordion-content" id="associationsContent" hidden>
+
+        <p>Cliquez sur une association pour découvrir ses activités,
+        ses photos et les dates des événements :</p>
+
+        <div class="association-links">
+          <button type="button" class="asso-tab-btn" data-target="mudekaPhotos">MUDEKA</button>
+          <button type="button" class="asso-tab-btn" data-target="judkaPhotos">JUDKA</button>
+          <button type="button" class="asso-tab-btn" data-target="commissionPhotos">
+            Commission culturelle
+          </button>
+        </div>
+
       </div>
     </div>
-  </div>
 
-  <!-- GALERIE MUDEKA (masquée par défaut) -->
-  <div id="mudekaPhotos" class="asso-gallery" style="display: none;">
-    <h3>Photos de MUDEKA</h3>
-    <div class="cards-grid">
-      <article class="info-card">
-        <span class="card-icon">
-          <img src="./les quartier du village/mudeka-1.jpg" alt="MUDEKA photo 1" loading="lazy">
-        </span>
-        <p>Réunion ou activité de MUDEKA</p>
-      </article>
-      <!-- Ajoutez d'autres cartes info-card ici pour d'autres photos de MUDEKA -->
-    </div>
-  </div>
+    <!-- GALERIE MUDEKA -->
+    <div id="mudekaPhotos" class="asso-gallery" hidden>
+      <h3>Association MUDEKA</h3>
+      <p>Découvrez les activités et les moments forts de MUDEKA.</p>
 
-  <!-- GALERIE JUDKA (masquée par défaut) -->
-  <div id="judkaPhotos" class="asso-gallery" style="display: none;">
-    <h3>Photos de JUDKA</h3>
-    <div class="cards-grid">
-      <article class="info-card">
-        <span class="card-icon">
-          <img src="./les quartier du village/judka-1.jpg" alt="JUDKA photo 1" loading="lazy">
-        </span>
-        <p>Activité de la jeunesse JUDKA</p>
-      </article>
-      <!-- Ajoutez d'autres cartes info-card ici pour d'autres photos de JUDKA -->
+      <div class="cards-grid">
+        <article class="info-card">
+          <span class="card-icon">
+            <img src="./images-koffikro/Lauréat journée de l'excellence.jfif" alt="Activité de MUDEKA" loading="lazy">
+          </span>
+          <h4>Réunion de MUDEKA</h4>
+          <p class="photo-date">Date : À compléter</p>
+          <p>Rencontre et échanges des membres de l'association.</p>
+        </article>
+      </div>
     </div>
-  </div>
 
-  <!-- GALERIE COMMISSION CULTURELLE (masquée par défaut) -->
-  <div id="commissionPhotos" class="asso-gallery" style="display: none;">
-    <h3>Photos de la Commission Culturelle</h3>
-    <div class="cards-grid">
-      <article class="info-card">
-        <span class="card-icon">
-          <img src="./les quartier du village/commission-1.jpg" alt="Commission photo 1" loading="lazy">
-        </span>
-        <p>Cérémonie culturelle</p>
-      </article>
+    <!-- GALERIE JUDKA -->
+    <div id="judkaPhotos" class="asso-gallery" hidden>
+      <h3>Association JUDKA</h3>
+      <p>Découvrez les activités de la jeunesse JUDKA.</p>
+
+      <div class="cards-grid">
+        <article class="info-card">
+          <span class="card-icon">
+            <img src="./images-koffikro/Cérémonie de la journée de l'excellence.jfif" alt="Activité de JUDKA" loading="lazy">
+          </span>
+          <h4>Activité de la jeunesse JUDKA</h4>
+          <p class="photo-date">Date : À compléter</p>
+          <p>Participation des jeunes à la vie du village.</p>
+        </article>
+      </div>
     </div>
-  </div>
+
+    <!-- GALERIE COMMISSION CULTURELLE -->
+    <div id="commissionPhotos" class="asso-gallery" hidden>
+      <h3>Commission culturelle</h3>
+      <p>Découvrez les cérémonies et activités culturelles du village.</p>
+
+      <div class="cards-grid">
+        <article class="info-card">
+          <span class="card-icon">
+            <img src="./images-koffikro/commission-controle.jfif" alt="Commission culturelle et Comité de contrôle" loading="lazy">
+          </span>
+          <h4>Activité de la commission culturelle</h4>
+          <p class="photo-date">Date : À compléter</p>
+          <p>Organisation et valorisation du patrimoine culturel de Koffi-Agrokro.</p>
+        </article>
+      </div>
+    </div>
+
+  </section>
 
   <!-- LA GRILLE CLASSIQUE DES AUTRES ÉVÉNEMENTS -->
   <div class="cards-grid" style="margin-top: 30px;">
-
-    <article class="info-card">
-      <span class="card-icon">
-        <img src="./images-koffikro/Lauréat journée de l'excellence.jfif" alt="Journée de l'excellence" loading="lazy">
-      </span>
-      <h3>Journée de l'excellence</h3>
-      <p>Cérémonie dédiée à la valorisation et à l'encouragement du mérite.</p>
-    </article>
-
-    <article class="info-card">
-      <span class="card-icon">
-        <img src="./images-koffikro/Kouadio bah.jfif" alt="Kouadio Bah" loading="lazy">
-      </span>
-      <h3>Kouadio Bah</h3>
-      <p>Figures et repères historiques de notre communauté.</p>
-    </article>
-
-    <article class="info-card">
-      <span class="card-icon">
-        <img src="./images-koffikro/Pâque 2026.jfif" alt="Pâque 2026" loading="lazy">
-      </span>
-      <h3>Pâque 2026</h3>
-      <p>Festivités, retrouvailles et célébrations culturelles de l'année.</p>
-    </article>
-
-    <article class="info-card">
-      <span class="card-icon">
-        <img src="./images-koffikro/Réunion de famille avec la chefferie.jfif" alt="Réunion de famille avec la chefferie" loading="lazy">
-      </span>
-      <h3>Réunion avec la chefferie</h3>
-      <p>Concertation et sagesse autour des traditions et de l'autorité coutumière.</p>
-    </article>
-
-  </div>
-
-</section>
-
-  <div class="cards-grid">
 
     <article class="info-card">
       <span class="card-icon">
@@ -378,8 +357,8 @@
     </article>
 
   </div>
-</section>
 
+</section>
 <!-- ================= QUARTIERS ================= -->
 <section class="section" id="quartiers">
 
@@ -625,13 +604,19 @@
 <script src="./script.js"></script>
 <script src="./suggestions.js"></script>
 
+
 <!-- SCRIPTS LOCAUX -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Accordéon des associations
+  // ==========================================
+  // 1. ACCORDÉON DES ASSOCIATIONS
+  // ==========================================
+
   document.querySelectorAll(".accordion-btn").forEach(function (button) {
+
     button.addEventListener("click", function () {
+
       const content = button.nextElementSibling;
       const isOpen = button.getAttribute("aria-expanded") === "true";
 
@@ -643,7 +628,106 @@ document.addEventListener("DOMContentLoaded", function () {
       if (icon) {
         icon.textContent = isOpen ? "＋" : "−";
       }
+
     });
+
+  });
+
+
+  // ==========================================
+  // 2. GALERIES INTERACTIVES DES ASSOCIATIONS
+  // ==========================================
+
+  const associationButtons = document.querySelectorAll(".asso-tab-btn");
+  const galleries = document.querySelectorAll(".asso-gallery");
+
+  associationButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const targetId = this.dataset.target;
+
+      // Masquer toutes les galeries
+      galleries.forEach(function (gallery) {
+        gallery.hidden = true;
+        gallery.style.display = "none";
+      });
+
+      // Désactiver tous les boutons
+      associationButtons.forEach(function (btn) {
+        btn.classList.remove("active");
+        btn.setAttribute("aria-pressed", "false");
+      });
+
+      // Afficher la galerie sélectionnée
+      const selectedGallery = document.getElementById(targetId);
+
+      if (selectedGallery) {
+
+        selectedGallery.hidden = false;
+        selectedGallery.style.display = "block";
+
+        this.classList.add("active");
+        this.setAttribute("aria-pressed", "true");
+
+        // Faire défiler vers la galerie
+        selectedGallery.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+
+    });
+
+  });
+
+
+  // ==========================================
+  // 3. OUVERTURE DES PHOTOS EN GRAND FORMAT
+  // ==========================================
+
+  document.querySelectorAll(".asso-gallery .info-card img").forEach(function (img) {
+
+    img.style.cursor = "pointer";
+
+    img.addEventListener("click", function () {
+
+      const lightbox = document.createElement("div");
+
+      lightbox.style.cssText = `
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        padding: 20px;
+        cursor: pointer;
+      `;
+
+      const largeImage = document.createElement("img");
+
+      largeImage.src = this.src;
+      largeImage.alt = this.alt;
+
+      largeImage.style.cssText = `
+        max-width: 95%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 8px;
+      `;
+
+      lightbox.appendChild(largeImage);
+      document.body.appendChild(lightbox);
+
+      lightbox.addEventListener("click", function () {
+        lightbox.remove();
+      });
+
+    });
+
   });
 
 });

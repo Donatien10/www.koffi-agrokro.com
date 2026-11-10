@@ -302,10 +302,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // LES IMAGES DE LA PAGE D'ACCUEIL
     const imagesAccueil = [
-    "./07ddb9ef-2dee-4153-b75a-37cf729c03fc.png",
+    "./b9767e57-857e-4851-9b1a-4bcea4920325.jfif",
     "./831b8e48-253b-41eb-898d-6d93602501a4.jfif",
-    "./d037e192-cfc6-42a3-a68c-522a1481fd43.jfif",
-    "./a6d1dab1-312c-4795-8963-0561a5505670.jfif"
+    "./a6d1dab1-312c-4795-8963-0561a5505670.jfif",
+    "./5fa16d77-a4d7-471a-aafd-abd3f39c0b60.png",
 ];
 
     let imageActuelle = 0;
