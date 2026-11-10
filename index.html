@@ -150,46 +150,192 @@
     <h2>Les atouts du village</h2>
     <p>
       Les éléments qui participent à l'identité et au développement
-      de Koffi-Agrokro.
+      de Koffi-Agrokro. Cliquez sur un bouton pour voir la galerie photos.
     </p>
   </div>
 
+  <!-- LES CARTES DES ATOUTS AVEC BOUTONS -->
   <div class="cards-grid">
 
+    <!-- Environnement -->
     <article class="info-card">
       <span class="card-icon">
         <img src="./images acceuil/image.png" alt="Environnement" loading="lazy">
       </span>
       <h3>Environnement</h3>
       <p>Notre cadre de vie, nos terres et notre environnement naturel.</p>
+      <button type="button" class="asso-tab-btn atout-btn" data-target="environnementPhotos" style="margin-top: 15px; width: 100%;">
+        Voir les photos
+      </button>
     </article>
 
+    <!-- Solidarité -->
     <article class="info-card">
       <span class="card-icon">
         <img src="./images-koffikro/Pâque 2026.jfif" alt="Solidarité" loading="lazy">
       </span>
       <h3>Solidarité</h3>
       <p>L'entraide et les liens entre les familles et les habitants.</p>
+      <button type="button" class="asso-tab-btn atout-btn" data-target="solidaritePhotos" style="margin-top: 15px; width: 100%;">
+        Voir les photos
+      </button>
     </article>
 
+    <!-- Traditions -->
     <article class="info-card">
       <span class="card-icon">
         <img src="./images-koffikro/tam tam du village  image 2.jfif" alt="Traditions" loading="lazy">
       </span>
       <h3>Traditions</h3>
       <p>Nos coutumes, notre culture et les valeurs transmises.</p>
+      <button type="button" class="asso-tab-btn atout-btn" data-target="traditionsPhotos" style="margin-top: 15px; width: 100%;">
+        Voir les photos
+      </button>
     </article>
 
+    <!-- Développement -->
     <article class="info-card">
       <span class="card-icon">
         <img src="./images-koffikro/plan du village.jfif" alt="Développement" loading="lazy">
       </span>
       <h3>Développement</h3>
       <p>Les initiatives et les projets pour l'avenir du village.</p>
+      <button type="button" class="asso-tab-btn atout-btn" data-target="developpementPhotos" style="margin-top: 15px; width: 100%;">
+        Voir les photos
+      </button>
     </article>
 
   </div>
-</section>
+
+  <!-- ================= GALERIES DES ATOUTS ================= -->
+
+<!-- 1. GALERIE ENVIRONNEMENT -->
+<div id="environnementPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
+  <h3>Photos de l'Environnement</h3>
+  <p>Découvrez notre cadre de vie, nos terres et nos espaces naturels.</p>
+  <div class="cards-grid">
+
+    <!-- Photo 1 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images acceuil/image.png" alt="Environnement 1" loading="lazy">
+      </span>
+      <h4>Cadre naturel</h4>
+      <p>Vue sur la nature et le paysage du village.</p>
+    </article>
+
+    <!-- Photo 2 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Kouadio bah.jfif" alt="Environnement 2" loading="lazy">
+      </span>
+      <h4>Espaces verts</h4>
+      <p>Nos terres cultivables et forêts.</p>
+    </article>
+
+    <!-- Ajoutez d'autres cartes <article> d'environnement ici -->
+
+  </div>
+</div>
+
+
+<!-- 2. GALERIE SOLIDARITÉ -->
+<div id="solidaritePhotos" class="asso-gallery" hidden style="margin-top: 30px;">
+  <h3>Photos de la Solidarité</h3>
+  <p>Moments d'entraide, de rassemblement et de fraternité entre habitants.</p>
+  <div class="cards-grid">
+
+    <!-- Photo 1 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Pâque 2026.jfif" alt="Solidarité 1" loading="lazy">
+      </span>
+      <h4>Retrouvailles communautaires</h4>
+      <p>Moments forts partagés par les familles lors des festivités.</p>
+    </article>
+
+    <!-- Photo 2 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Réunion de famille avec la chefferie.jfif" alt="Solidarité 2" loading="lazy">
+      </span>
+      <h4>Réunion de famille</h4>
+      <p>Échanges et cohésion avec les garants de la tradition.</p>
+    </article>
+
+    <!-- Ajoutez d'autres cartes <article> de solidarité ici -->
+
+  </div>
+</div>
+
+
+<!-- 3. GALERIE TRADITIONS -->
+<div id="traditionsPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
+  <h3>Photos des Traditions</h3>
+  <p>Cérémonies, patrimoine culturel et coutumes de Koffi-Agrokro.</p>
+  <div class="cards-grid">
+
+    <!-- Photo 1 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/tam tam du village  image 2.jfif" alt="Tradition 1" loading="lazy">
+      </span>
+      <h4>Instruments traditionnels</h4>
+      <p>Héritage culturel et transmission.</p>
+    </article>
+
+    <!-- Photo 2 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/Cérémonie de libation.jfif" alt="Tradition 2" loading="lazy">
+      </span>
+      <h4>Cérémonie coutumière</h4>
+      <p>Communion avec les ancêtres.</p>
+    </article>
+
+    <!-- Photo 3 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/tam-tam du village.jfif" alt="Tradition 3" loading="lazy">
+      </span>
+      <h4>Tam-tam parleur</h4>
+      <p>Symbole fort de communication ancestrale.</p>
+    </article>
+
+    <!-- Ajoutez d'autres cartes <article> de traditions ici -->
+
+  </div>
+</div>
+
+
+<!-- 4. GALERIE DÉVELOPPEMENT -->
+<div id="developpementPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
+  <h3>Photos du Développement</h3>
+  <p>Les projets, aménagements et perspectives pour l'avenir.</p>
+  <div class="cards-grid">
+
+    <!-- Photo 1 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./images-koffikro/plan du village.jfif" alt="Développement 1" loading="lazy">
+      </span>
+      <h4>Plan du village</h4>
+      <p>Planification des infrastructures.</p>
+    </article>
+
+    <!-- Photo 2 -->
+    <article class="info-card">
+      <span class="card-icon">
+        <img src="./5fa16d77-a4d7-471a-aafd-abd3f39c0b60.png" alt="Développement 2" loading="lazy">
+      </span>
+      <h4>Projet et aménagement</h4>
+      <p>Perspectives pour l'avenir du village.</p>
+    </article>
+
+    <!-- Ajoutez d'autres cartes <article> de développement ici -->
+
+  </div>
+</div>
 
 <!-- ================= LA VIE À KOFFI-AGROKRO ================= -->
 <section class="section" id="activites-vie-village">
@@ -229,11 +375,12 @@
     </div>
 
     <!-- GALERIE MUDEKA -->
-    <div id="mudekaPhotos" class="asso-gallery" hidden>
+    <div id="mudekaPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
       <h3>Association MUDEKA</h3>
       <p>Découvrez les activités et les moments forts de MUDEKA.</p>
 
       <div class="cards-grid">
+        <!-- DUPLIQUER CE BLOC POUR CHAQUE NOUVELLE PHOTO -->
         <article class="info-card">
           <span class="card-icon">
             <img src="./images-koffikro/Lauréat journée de l'excellence.jfif" alt="Activité de MUDEKA" loading="lazy">
@@ -246,11 +393,12 @@
     </div>
 
     <!-- GALERIE JUDKA -->
-    <div id="judkaPhotos" class="asso-gallery" hidden>
+    <div id="judkaPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
       <h3>Association JUDKA</h3>
       <p>Découvrez les activités de la jeunesse JUDKA.</p>
 
       <div class="cards-grid">
+        <!-- DUPLIQUER CE BLOC POUR CHAQUE NOUVELLE PHOTO -->
         <article class="info-card">
           <span class="card-icon">
             <img src="./images-koffikro/Cérémonie de la journée de l'excellence.jfif" alt="Activité de JUDKA" loading="lazy">
@@ -263,11 +411,12 @@
     </div>
 
     <!-- GALERIE COMMISSION CULTURELLE -->
-    <div id="commissionPhotos" class="asso-gallery" hidden>
+    <div id="commissionPhotos" class="asso-gallery" hidden style="margin-top: 30px;">
       <h3>Commission culturelle</h3>
       <p>Découvrez les cérémonies et activités culturelles du village.</p>
 
       <div class="cards-grid">
+        <!-- DUPLIQUER CE BLOC POUR CHAQUE NOUVELLE PHOTO -->
         <article class="info-card">
           <span class="card-icon">
             <img src="./images-koffikro/Commission culturelle et Comité de contrôle.jfif" alt="Commission culturelle et Comité de contrôle" loading="lazy">
@@ -281,8 +430,8 @@
 
   </section>
 
-  <!-- LA GRILLE CLASSIQUE DES AUTRES ÉVÉNEMENTS -->
-  <div class="cards-grid" style="margin-top: 30px;">
+  <!-- LA GRILLE CLASSIQUE DES AUTRES ÉVÉNEMENTS DU VILLAGE -->
+  <div class="cards-grid" style="margin-top: 40px;">
 
     <article class="info-card">
       <span class="card-icon">
@@ -359,6 +508,7 @@
   </div>
 
 </section>
+
 <!-- ================= QUARTIERS ================= -->
 <section class="section" id="quartiers">
 
@@ -393,7 +543,7 @@
       </div>
     </div>
 
-    <!-- Partie droite : Image globale du village (avec l'ID pour le script de défilement) -->
+    <!-- Partie droite : Image globale du village -->
     <div class="village-main-image">
       <img id="villageMainImg" src="./photo pour le site/e5bd8bb2-d5b3-40f3-b8ee-789a40f4c249 (1).jfif" alt="Vue globale du village Koffi-Agrokro" loading="lazy">
     </div>
@@ -604,7 +754,6 @@
 <script src="./script.js"></script>
 <script src="./suggestions.js"></script>
 
-
 <!-- SCRIPTS LOCAUX -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -612,11 +761,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // ==========================================
   // 1. ACCORDÉON DES ASSOCIATIONS
   // ==========================================
-
   document.querySelectorAll(".accordion-btn").forEach(function (button) {
-
     button.addEventListener("click", function () {
-
       const content = button.nextElementSibling;
       const isOpen = button.getAttribute("aria-expanded") === "true";
 
@@ -624,27 +770,20 @@ document.addEventListener("DOMContentLoaded", function () {
       content.hidden = isOpen;
 
       const icon = button.querySelector("span");
-
       if (icon) {
         icon.textContent = isOpen ? "＋" : "−";
       }
-
     });
-
   });
 
-
   // ==========================================
-  // 2. GALERIES INTERACTIVES DES ASSOCIATIONS
+  // 2. GALERIES INTERACTIVES (ASSOCIATIONS & ATOUTS)
   // ==========================================
-
-  const associationButtons = document.querySelectorAll(".asso-tab-btn");
+  const tabButtons = document.querySelectorAll(".asso-tab-btn, .atout-btn");
   const galleries = document.querySelectorAll(".asso-gallery");
 
-  associationButtons.forEach(function (button) {
-
+  tabButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-
       const targetId = this.dataset.target;
 
       // Masquer toutes les galeries
@@ -654,45 +793,36 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Désactiver tous les boutons
-      associationButtons.forEach(function (btn) {
+      tabButtons.forEach(function (btn) {
         btn.classList.remove("active");
         btn.setAttribute("aria-pressed", "false");
       });
 
       // Afficher la galerie sélectionnée
       const selectedGallery = document.getElementById(targetId);
-
       if (selectedGallery) {
-
         selectedGallery.hidden = false;
         selectedGallery.style.display = "block";
 
         this.classList.add("active");
         this.setAttribute("aria-pressed", "true");
 
-        // Faire défiler vers la galerie
+        // Faire défiler jusqu'à la galerie
         selectedGallery.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
-
       }
-
     });
-
   });
 
-
   // ==========================================
-  // 3. OUVERTURE DES PHOTOS EN GRAND FORMAT
+  // 3. OUVERTURE DES PHOTOS EN GRAND FORMAT (LIGHTBOX)
   // ==========================================
-
-  document.querySelectorAll(".asso-gallery .info-card img").forEach(function (img) {
-
-    img.style.cursor = "pointer";
-
-    img.addEventListener("click", function () {
-
+  // Sélectionne les images dans les galeries interactives et la grille classique
+  document.body.addEventListener("click", function (e) {
+    if (e.target && e.target.matches(".info-card .card-icon img")) {
+      const img = e.target;
       const lightbox = document.createElement("div");
 
       lightbox.style.cssText = `
@@ -708,15 +838,15 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
 
       const largeImage = document.createElement("img");
-
-      largeImage.src = this.src;
-      largeImage.alt = this.alt;
+      largeImage.src = img.src;
+      largeImage.alt = img.alt;
 
       largeImage.style.cssText = `
         max-width: 95%;
         max-height: 90vh;
         object-fit: contain;
         border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       `;
 
       lightbox.appendChild(largeImage);
@@ -725,9 +855,7 @@ document.addEventListener("DOMContentLoaded", function () {
       lightbox.addEventListener("click", function () {
         lightbox.remove();
       });
-
-    });
-
+    }
   });
 
 });
