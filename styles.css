@@ -1658,3 +1658,18 @@ footer a:hover {
   background-color: #c29b38; /* Couleur dorée pour indiquer la sélection */
   color: #fff;
 }
+
+.hero {
+  min-height: 50vh !important; /* Réduit la hauteur à 50% de l'écran au lieu de 100vh */
+  padding: 40px 20px !important; /* Réduit les espacements intérieurs */
+}
+
+.hero-content h1 {
+  font-size: 2.2rem !important; /* Ajuste la taille du titre principal */
+  margin-bottom: 15px !important;
+}
+
+.hero-content p {
+  font-size: 1rem !important; /* Réduit la taille du paragraphe */
+  margin-bottom: 20px !important;
+}
