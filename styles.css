@@ -1673,3 +1673,32 @@ footer a:hover {
   font-size: 1rem !important; /* Réduit la taille du paragraphe */
   margin-bottom: 20px !important;
 }
+
+@keyframes changerCouleurBande {
+  0% {
+    background-color: #4CAF50; /* Vert initial */
+  }
+  33% {
+    background-color: #2196F3; /* Bleu intermédiaire */
+  }
+  66% {
+    background-color: #F44336; /* Rouge */
+  }
+  100% {
+    background-color: #4CAF50; /* Retour au vert pour une boucle fluide */
+  }
+}
+
+.accordion-btn {
+  /* Vos styles existants pour le bouton, puis ajoutez l'animation : */
+  animation: changerCouleurBande 6s infinite; /* L'animation tourne en boucle toutes les 6 secondes */
+  color: #fff; /* Assurez-vous que le texte reste lisible (blanc par exemple) */
+  padding: 10px 15px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
